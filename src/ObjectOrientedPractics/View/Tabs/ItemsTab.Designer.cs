@@ -44,6 +44,8 @@
             this.CostTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
             this.ItemLable2 = new System.Windows.Forms.Label();
+            this.CategoryLabel = new System.Windows.Forms.Label();
+            this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.ButtonsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsSplitContainer)).BeginInit();
@@ -140,6 +142,8 @@
             // ItemsSplitContainer.Panel2
             // 
             this.ItemsSplitContainer.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ItemsSplitContainer.Panel2.Controls.Add(this.CategoryComboBox);
+            this.ItemsSplitContainer.Panel2.Controls.Add(this.CategoryLabel);
             this.ItemsSplitContainer.Panel2.Controls.Add(this.DescriptionTextBox);
             this.ItemsSplitContainer.Panel2.Controls.Add(this.DescriptionLabel);
             this.ItemsSplitContainer.Panel2.Controls.Add(this.NameTextBox);
@@ -157,7 +161,7 @@
             // 
             this.DescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DescriptionTextBox.Location = new System.Drawing.Point(7, 277);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(7, 297);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(439, 137);
@@ -167,7 +171,7 @@
             // DescriptionLabel
             // 
             this.DescriptionLabel.AutoSize = true;
-            this.DescriptionLabel.Location = new System.Drawing.Point(6, 258);
+            this.DescriptionLabel.Location = new System.Drawing.Point(6, 278);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(78, 16);
             this.DescriptionLabel.TabIndex = 17;
@@ -177,7 +181,7 @@
             // 
             this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NameTextBox.Location = new System.Drawing.Point(7, 132);
+            this.NameTextBox.Location = new System.Drawing.Point(7, 154);
             this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(439, 93);
@@ -187,7 +191,7 @@
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(6, 113);
+            this.NameLabel.Location = new System.Drawing.Point(6, 135);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(47, 16);
             this.NameLabel.TabIndex = 15;
@@ -214,7 +218,7 @@
             // CostTextBox
             // 
             this.CostTextBox.ForeColor = System.Drawing.Color.Black;
-            this.CostTextBox.Location = new System.Drawing.Point(56, 71);
+            this.CostTextBox.Location = new System.Drawing.Point(76, 71);
             this.CostTextBox.Name = "CostTextBox";
             this.CostTextBox.Size = new System.Drawing.Size(148, 22);
             this.CostTextBox.TabIndex = 12;
@@ -223,7 +227,7 @@
             // IDTextBox
             // 
             this.IDTextBox.Enabled = false;
-            this.IDTextBox.Location = new System.Drawing.Point(56, 43);
+            this.IDTextBox.Location = new System.Drawing.Point(76, 43);
             this.IDTextBox.Name = "IDTextBox";
             this.IDTextBox.Size = new System.Drawing.Size(148, 22);
             this.IDTextBox.TabIndex = 11;
@@ -237,6 +241,25 @@
             this.ItemLable2.Size = new System.Drawing.Size(84, 16);
             this.ItemLable2.TabIndex = 10;
             this.ItemLable2.Text = "Select Item";
+            // 
+            // CategoryLabel
+            // 
+            this.CategoryLabel.AutoSize = true;
+            this.CategoryLabel.Location = new System.Drawing.Point(6, 101);
+            this.CategoryLabel.Name = "CategoryLabel";
+            this.CategoryLabel.Size = new System.Drawing.Size(65, 16);
+            this.CategoryLabel.TabIndex = 19;
+            this.CategoryLabel.Text = "Category:";
+            // 
+            // CategoryComboBox
+            // 
+            this.CategoryComboBox.FormattingEnabled = true;
+            this.CategoryComboBox.Items.AddRange(new object[] {
+            "Enum.GetValues(typeof(Category))"});
+            this.CategoryComboBox.Location = new System.Drawing.Point(76, 99);
+            this.CategoryComboBox.Name = "CategoryComboBox";
+            this.CategoryComboBox.Size = new System.Drawing.Size(148, 24);
+            this.CategoryComboBox.TabIndex = 20;
             // 
             // ItemsTab
             // 
@@ -275,5 +298,7 @@
         private System.Windows.Forms.TextBox CostTextBox;
         private System.Windows.Forms.TextBox IDTextBox;
         private System.Windows.Forms.Label ItemLable2;
+        private System.Windows.Forms.Label CategoryLabel;
+        private System.Windows.Forms.ComboBox CategoryComboBox;
     }
 }

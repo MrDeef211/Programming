@@ -45,7 +45,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 else
                 {
                     //Создание нового обьекта
-                    Item newItem = new Item(NameTextBox.Text, DescriptionTextBox.Text, bufferCost);
+                    Item newItem = new Item(NameTextBox.Text, DescriptionTextBox.Text, bufferCost, (Category)CategoryComboBox.SelectedIndex);
                     ItemsListBox.Items.Add(newItem);
                 }
             }

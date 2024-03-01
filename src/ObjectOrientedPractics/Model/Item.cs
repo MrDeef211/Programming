@@ -22,6 +22,8 @@ namespace ObjectOrientedPractics.Model
         private string _info;
         //стоимость
         private double _cost;
+        //категория товара
+        private Category _category;
 
 
         //имя товара
@@ -57,17 +59,29 @@ namespace ObjectOrientedPractics.Model
         {
             get { return _id; }
         }
+
+        /// <summary>
+        /// Котегория товара
+        /// </summary>
+        public Category Category
+        {
+            set => _category = value;
+            get { return _category; }
+        }
+
         /// <summary>
         /// конструктор
         /// </summary>
         /// <param name="name">айди</param>
         /// <param name="info">описание</param>
         /// <param name="cost">стоимость</param>
-        public Item(string name, string info, double cost)
+        /// <param name="category">категория товара</param>
+        public Item(string name, string info, double cost, Category category)
         {
             Name = name;
             Info = info;
             Cost = cost;
+            Category = category;
         }
 
         //Отображение
@@ -77,5 +91,20 @@ namespace ObjectOrientedPractics.Model
         }
     }
 
-
+    /// <summary>
+    /// Категории товара
+    /// </summary>
+    public enum Category
+    {
+        Toy,
+        Food,
+        Electronic,
+        Cloth,
+        Shoes,
+        Sport,
+        Medicine,
+        Furniture,
+        Accessory,
+        Game
+    }
 }
