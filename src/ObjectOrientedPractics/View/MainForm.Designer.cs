@@ -30,8 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Items = new System.Windows.Forms.TabPage();
-            this.Customers = new System.Windows.Forms.TabPage();
             this.itemsTab1 = new ObjectOrientedPractics.View.Tabs.ItemsTab();
+            this.Customers = new System.Windows.Forms.TabPage();
             this.customersTab1 = new ObjectOrientedPractics.View.Tabs.CustomersTab();
             this.tabControl1.SuspendLayout();
             this.Items.SuspendLayout();
@@ -60,6 +60,14 @@
             this.Items.Text = "Items";
             this.Items.UseVisualStyleBackColor = true;
             // 
+            // itemsTab1
+            // 
+            this.itemsTab1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.itemsTab1.Location = new System.Drawing.Point(3, 3);
+            this.itemsTab1.Name = "itemsTab1";
+            this.itemsTab1.Size = new System.Drawing.Size(880, 599);
+            this.itemsTab1.TabIndex = 0;
+            // 
             // Customers
             // 
             this.Customers.Controls.Add(this.customersTab1);
@@ -70,14 +78,6 @@
             this.Customers.TabIndex = 1;
             this.Customers.Text = "Customers";
             this.Customers.UseVisualStyleBackColor = true;
-            // 
-            // itemsTab1
-            // 
-            this.itemsTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.itemsTab1.Location = new System.Drawing.Point(3, 3);
-            this.itemsTab1.Name = "itemsTab1";
-            this.itemsTab1.Size = new System.Drawing.Size(880, 599);
-            this.itemsTab1.TabIndex = 0;
             // 
             // customersTab1
             // 

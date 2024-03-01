@@ -19,6 +19,8 @@ namespace ObjectOrientedPractics.View.Tabs
         public ItemsTab()
         {
             InitializeComponent();
+            // Инициализация Комбобокса категорий
+            CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
         }
 
         //Нажатие на кнопку добавление
@@ -116,11 +118,12 @@ namespace ObjectOrientedPractics.View.Tabs
             if (ItemsListBox.SelectedIndex != -1)
             {
                 Item selectedItem = (Item)ItemsListBox.SelectedItem;
-
+                //Заполнение полей
                 IDTextBox.Text = selectedItem.Id.ToString();
                 NameTextBox.Text = selectedItem.Name;
                 DescriptionTextBox.Text = selectedItem.Info;
                 CostTextBox.Text = selectedItem.Cost.ToString();
+                CategoryComboBox.SelectedIndex = (int)selectedItem.Category;
             }
         }
 

@@ -23,7 +23,7 @@ namespace ObjectOrientedPractics.Model
         //имя фамилия
         private string _fullname;
         //Адресс
-        private string _address;
+        private Address _address;
 
 
         
@@ -34,9 +34,9 @@ namespace ObjectOrientedPractics.Model
             get { return _fullname; }
         }
         //Адресс
-        public string Address
+        public Address Address
         {
-            set { _address = ValueValidator.AssertStringOnLength(value, 500, "address"); }
+            set { _address = value; }
             get { return _address; }
         }
         // айди
@@ -50,7 +50,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="id">айди</param>
         /// <param name="fullname">имяфамилия</param>
         /// <param name="address">адресс</param>
-        public Customer(string fullname, string address) 
+        public Customer(string fullname, Address address) 
         { 
             FullName = fullname;   
             Address = address;

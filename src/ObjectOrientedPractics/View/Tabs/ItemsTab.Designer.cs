@@ -35,6 +35,8 @@
             this.ButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ItemLable1 = new System.Windows.Forms.Label();
             this.ItemsSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.CategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.CategoryLabel = new System.Windows.Forms.Label();
             this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.NameTextBox = new System.Windows.Forms.TextBox();
@@ -44,8 +46,6 @@
             this.CostTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
             this.ItemLable2 = new System.Windows.Forms.Label();
-            this.CategoryLabel = new System.Windows.Forms.Label();
-            this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.ButtonsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsSplitContainer)).BeginInit();
@@ -157,6 +157,23 @@
             this.ItemsSplitContainer.SplitterDistance = 429;
             this.ItemsSplitContainer.TabIndex = 2;
             // 
+            // CategoryComboBox
+            // 
+            this.CategoryComboBox.FormattingEnabled = true;
+            this.CategoryComboBox.Location = new System.Drawing.Point(76, 99);
+            this.CategoryComboBox.Name = "CategoryComboBox";
+            this.CategoryComboBox.Size = new System.Drawing.Size(148, 24);
+            this.CategoryComboBox.TabIndex = 20;
+            // 
+            // CategoryLabel
+            // 
+            this.CategoryLabel.AutoSize = true;
+            this.CategoryLabel.Location = new System.Drawing.Point(6, 101);
+            this.CategoryLabel.Name = "CategoryLabel";
+            this.CategoryLabel.Size = new System.Drawing.Size(65, 16);
+            this.CategoryLabel.TabIndex = 19;
+            this.CategoryLabel.Text = "Category:";
+            // 
             // DescriptionTextBox
             // 
             this.DescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -241,25 +258,6 @@
             this.ItemLable2.Size = new System.Drawing.Size(84, 16);
             this.ItemLable2.TabIndex = 10;
             this.ItemLable2.Text = "Select Item";
-            // 
-            // CategoryLabel
-            // 
-            this.CategoryLabel.AutoSize = true;
-            this.CategoryLabel.Location = new System.Drawing.Point(6, 101);
-            this.CategoryLabel.Name = "CategoryLabel";
-            this.CategoryLabel.Size = new System.Drawing.Size(65, 16);
-            this.CategoryLabel.TabIndex = 19;
-            this.CategoryLabel.Text = "Category:";
-            // 
-            // CategoryComboBox
-            // 
-            this.CategoryComboBox.FormattingEnabled = true;
-            this.CategoryComboBox.Items.AddRange(new object[] {
-            "Enum.GetValues(typeof(Category))"});
-            this.CategoryComboBox.Location = new System.Drawing.Point(76, 99);
-            this.CategoryComboBox.Name = "CategoryComboBox";
-            this.CategoryComboBox.Size = new System.Drawing.Size(148, 24);
-            this.CategoryComboBox.TabIndex = 20;
             // 
             // ItemsTab
             // 

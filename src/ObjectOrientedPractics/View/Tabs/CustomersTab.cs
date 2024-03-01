@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.View.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ObjectOrientedPractics.View.Tabs
@@ -26,7 +27,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void AddButton_Click(object sender, EventArgs e)
         {
             //Проверка на пройденную валидацию
-            if (FullNameTextBox.BackColor != Color.Red && AddressTextBox.BackColor != Color.Red)
+            if (FullNameTextBox.BackColor != Color.Red)
             {
                 //Проверка выделения
                 if (CustomersListBox.SelectedIndex != -1)
@@ -36,13 +37,13 @@ namespace ObjectOrientedPractics.View.Tabs
                     Customer selectedCustomer = (Customer)CustomersListBox.SelectedItem;
                     //Изменение обьекта
                     selectedCustomer.FullName = FullNameTextBox.Text;
-                    selectedCustomer.Address = AddressTextBox.Text;
+                    selectedCustomer.Address = AddressControl.Address;
                     CustomersListBox.Items[index] = selectedCustomer;
                 }
                 else
                 {
                     //Добавление нового обьекта
-                    Customer newItem = new Customer(FullNameTextBox.Text, AddressTextBox.Text);
+                    Customer newItem = new Customer(FullNameTextBox.Text, AddressControl.Address);
                     CustomersListBox.Items.Add(newItem);
                 }
             }
@@ -74,19 +75,6 @@ namespace ObjectOrientedPractics.View.Tabs
 
         }
 
-        //Изменение поля адресс + валидация
-        private void AddressTextBox_Change(object sender, EventArgs e)
-        {
-            if (AddressTextBox.Text.Length > 0 && AddressTextBox.Text.Length <= 500)
-            {
-                AddressTextBox.BackColor = Color.White;
-            }
-            else
-            {
-                AddressTextBox.BackColor = Color.Red;
-            }
-
-        }
 
         //Выделение обьекта в CustomersListBox
         private void CustomersListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,7 +84,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 Customer selectedCustomer = (Customer)CustomersListBox.SelectedItem;
                 IDTextBox.Text = selectedCustomer.Id.ToString();
                 FullNameTextBox.Text = selectedCustomer.FullName;
-                AddressTextBox.Text = selectedCustomer.Address;
+
             }
         }
 
@@ -105,7 +93,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IDTextBox.Text = "";
             FullNameTextBox.Text = "";
-            AddressTextBox.Text = "";
+            AddressControl = null;
         }
 
         //Сброс выделения при нажатии клавиши в окне ItemsListBox
