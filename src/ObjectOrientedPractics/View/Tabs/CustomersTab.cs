@@ -17,8 +17,6 @@ namespace ObjectOrientedPractics.View.Tabs
     public partial class CustomersTab : UserControl
     {
 
-        private List<Customer> customer = new List<Customer>();
-
         public CustomersTab()
         {
             InitializeComponent();
@@ -49,7 +47,6 @@ namespace ObjectOrientedPractics.View.Tabs
                     //Добавление нового обьекта
                     Customer newCustomer = new Customer(FullNameTextBox.Text, AddressControl.Address);
                     CustomersListBox.Items.Add(newCustomer);
-                    customer.Add(newCustomer);
                 }
             }
         }
@@ -62,7 +59,8 @@ namespace ObjectOrientedPractics.View.Tabs
             if (index != -1)
             {
                 CustomersListBox.Items.RemoveAt(index);
-                ClearInputs();
+                CustomersListBox.SelectedIndex = -1;
+                CustomersListBox_SelectedIndexChanged(sender,e);
             }
         }
 
@@ -86,19 +84,17 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (CustomersListBox.SelectedIndex != -1)
             {
-                Customer selectedCustomer = customer[CustomersListBox.SelectedIndex];
+                Customer selectedCustomer = (Customer)CustomersListBox.SelectedItem;
                 IDTextBox.Text = selectedCustomer.Id.ToString();
                 FullNameTextBox.Text = selectedCustomer.FullName;
                 AddressControl.Address = selectedCustomer.Address;
             }
-        }
-
-        //Обновление экрана
-        private void ClearInputs()
-        {
-            IDTextBox.Text = "";
-            FullNameTextBox.Text = "";
-            AddressControl = null;
+            else
+            {
+                IDTextBox.Text = "";
+                FullNameTextBox.Text = "";
+                AddressControl.Address = new Address();
+            }
         }
 
         //Сброс выделения при нажатии клавиши в окне ItemsListBox

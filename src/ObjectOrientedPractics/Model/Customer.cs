@@ -47,13 +47,12 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Конструктор
         /// </summary>
-        /// <param name="id">айди</param>
-        /// <param name="fullname">имяфамилия</param>
+        /// <param name="fullname">имяФамилия</param>
         /// <param name="address">адресс</param>
         public Customer(string fullname, Address address) 
         { 
             FullName = fullname;   
-            Address = address;
+            Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
         }
         //Отображение
         public override string ToString()
