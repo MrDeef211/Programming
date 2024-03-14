@@ -186,7 +186,6 @@
             // 
             // AddressControl
             // 
-            this.AddressControl.Address = null;
             this.AddressControl.Location = new System.Drawing.Point(9, 99);
             this.AddressControl.Name = "AddressControl";
             this.AddressControl.Size = new System.Drawing.Size(467, 187);

@@ -17,13 +17,14 @@ namespace ObjectOrientedPractics.View.Controls
         public AddressControl()
         {
             InitializeComponent();
-            Address = null;
+            WrongInputLabel.Text = "";
+
         }
 
         /// <summary>
-        /// Создание нового класса
+        /// Создание нового экземпляра класса
         /// </summary>
-        private Address _address;
+        private Address _address = new Address();
 
         /// <summary>
         /// Свойство для адреса
@@ -35,7 +36,10 @@ namespace ObjectOrientedPractics.View.Controls
                 _address = value;
                 UpdateTextBoxes();
             }
-            get => _address;
+            get
+            { 
+                return _address; 
+            }
         }
 
         /// <summary>
@@ -43,24 +47,13 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         private void UpdateTextBoxes()
         {
-            if (Address != null)
-            {
-                PostIndexTextBox.Text = Address.Index.ToString();
-                CountryTextBox.Text = Address.Country;
-                CityTextBox.Text = Address.City;
-                StreetTextBox.Text = Address.Street;
-                BuildingTextBox.Text = Address.Building;
-                ApartmentTextBox.Text = Address.Apartment;
-            }
-            else
-            {
-                PostIndexTextBox.Text = "";
-                CountryTextBox.Text = "";
-                CityTextBox.Text = "";
-                StreetTextBox.Text = "";
-                BuildingTextBox.Text = "";
-                ApartmentTextBox.Text = "";
-            }
+
+            PostIndexTextBox.Text = Address.Index.ToString();
+            CountryTextBox.Text = Address.Country;
+            CityTextBox.Text = Address.City;
+            StreetTextBox.Text = Address.Street;
+            BuildingTextBox.Text = Address.Building;
+            ApartmentTextBox.Text = Address.Apartment;
 
         }
 

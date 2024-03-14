@@ -36,7 +36,7 @@ namespace ObjectOrientedPractics.Model
                 }
                 else
                 {
-                    //throw new Exception("Index must have 6 symbols");
+                    throw new Exception("Index must have 6 symbols");
                 }
             }
 
@@ -80,7 +80,7 @@ namespace ObjectOrientedPractics.Model
 
         public Address ()
         {
-            Index = 100000;
+            Index = 111111;
             Country = "-";
             City = "-";
             Street = "-";

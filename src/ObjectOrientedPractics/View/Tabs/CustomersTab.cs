@@ -16,6 +16,9 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class CustomersTab : UserControl
     {
+
+        private List<Customer> customer = new List<Customer>();
+
         public CustomersTab()
         {
             InitializeComponent();
@@ -39,12 +42,14 @@ namespace ObjectOrientedPractics.View.Tabs
                     selectedCustomer.FullName = FullNameTextBox.Text;
                     selectedCustomer.Address = AddressControl.Address;
                     CustomersListBox.Items[index] = selectedCustomer;
+                    
                 }
                 else
                 {
                     //Добавление нового обьекта
-                    Customer newItem = new Customer(FullNameTextBox.Text, AddressControl.Address);
-                    CustomersListBox.Items.Add(newItem);
+                    Customer newCustomer = new Customer(FullNameTextBox.Text, AddressControl.Address);
+                    CustomersListBox.Items.Add(newCustomer);
+                    customer.Add(newCustomer);
                 }
             }
         }
@@ -81,10 +86,10 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (CustomersListBox.SelectedIndex != -1)
             {
-                Customer selectedCustomer = (Customer)CustomersListBox.SelectedItem;
+                Customer selectedCustomer = customer[CustomersListBox.SelectedIndex];
                 IDTextBox.Text = selectedCustomer.Id.ToString();
                 FullNameTextBox.Text = selectedCustomer.FullName;
-
+                AddressControl.Address = selectedCustomer.Address;
             }
         }
 
