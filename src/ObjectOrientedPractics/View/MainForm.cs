@@ -19,11 +19,12 @@ namespace ObjectOrientedPractics
         public MainForm()
         {
             InitializeComponent();
-            _store = new Store();
+            _store = new Store(); 
 
             ItemsTab itemsTab = new ItemsTab();
             CustomersTab customersTab = new CustomersTab();
 
+            //Загрузка из хранения
             itemsTab.Items = _store.Items;
             customersTab.Customer = _store.Customer;
         }
