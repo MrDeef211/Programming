@@ -43,7 +43,7 @@ namespace ObjectOrientedPractics.Model
         {
             set
             {
-                if (value > 0 && value <= 100000)
+                if (value >= 0 && value <= 100000)
                 {
                     _cost = value;
                 }

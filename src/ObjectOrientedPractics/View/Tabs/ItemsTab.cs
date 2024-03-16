@@ -52,8 +52,11 @@ namespace ObjectOrientedPractics.View.Tabs
             //Проверка пройденной валидации
             if (NameTextBox.BackColor != Color.Red && DescriptionTextBox.BackColor != Color.Red && CostTextBox.BackColor != Color.Red)
             {
-                //Стоимость
-                double bufferCost = double.Parse(CostTextBox.Text);
+                //Стоимость в число
+                double bufferCost;
+                if (!double.TryParse(CostTextBox.Text, out bufferCost))
+                    bufferCost = 0;
+
                 //Что выделенно
                 if (ItemsListBox.SelectedIndex != -1)
                 {
@@ -109,7 +112,7 @@ namespace ObjectOrientedPractics.View.Tabs
             float bufferCost;
             if (float.TryParse(CostTextBox.Text, out bufferCost))
             {
-                if (bufferCost > 0 && bufferCost <= 100000)
+                if (bufferCost >= 0 && bufferCost <= 100000)
                 {
                     CostTextBox.BackColor = Color.White;
                 }
@@ -120,7 +123,8 @@ namespace ObjectOrientedPractics.View.Tabs
             }
             else
             {
-                CostTextBox.BackColor = Color.Red;
+                if (CostTextBox.Text != "")
+                    CostTextBox.BackColor = Color.Red;  
             }
 
         }
@@ -165,6 +169,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void ItemsListBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ItemsListBox.SelectedIndex = -1;
+            ClearInputs();
         }
 
         //Сброс выделения при нажатии пкм
@@ -173,6 +178,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (e.Button == MouseButtons.Right)
             {
                 ItemsListBox.SelectedIndex = -1;
+                ClearInputs();
             }
         }
     }

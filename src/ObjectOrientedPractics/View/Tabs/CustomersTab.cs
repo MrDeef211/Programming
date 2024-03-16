@@ -125,6 +125,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void ItemsListBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             CustomersListBox.SelectedIndex = -1;
+            CustomersListBox_SelectedIndexChanged(sender, e);
         }
 
         //Сброс выделения при нажатии пкм
@@ -133,6 +134,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (e.Button == MouseButtons.Right)
             {
                 CustomersListBox.SelectedIndex = -1;
+                CustomersListBox_SelectedIndexChanged(sender, e);
             }
         }
 
