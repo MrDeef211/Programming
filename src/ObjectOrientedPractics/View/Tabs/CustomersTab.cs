@@ -91,7 +91,7 @@ namespace ObjectOrientedPractics.View.Tabs
         //Изменение поля имени + валидация
         private void FullNameTextBox_Change(object sender, EventArgs e)
         {
-            if (FullNameTextBox.Text.Length > 0 && FullNameTextBox.Text.Length <= 200)
+            if (FullNameTextBox.Text.Length <= 200)
             {
                 FullNameTextBox.BackColor = Color.White;
             }

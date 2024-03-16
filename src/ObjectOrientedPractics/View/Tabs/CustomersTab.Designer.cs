@@ -148,12 +148,12 @@
             // 
             // AddressControl
             // 
-            address1.Apartment = "-";
-            address1.Building = "-";
-            address1.City = "-";
-            address1.Country = "-";
+            address1.Apartment = "";
+            address1.Building = "";
+            address1.City = "";
+            address1.Country = "";
             address1.Index = 111111;
-            address1.Street = "-";
+            address1.Street = "";
             this.AddressControl.Address = address1;
             this.AddressControl.Location = new System.Drawing.Point(7, 80);
             this.AddressControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);

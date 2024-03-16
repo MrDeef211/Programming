@@ -78,7 +78,7 @@ namespace ObjectOrientedPractics.View.Tabs
         //Редактирование поля имени + валидация
         private void NameTextBox_Change(object sender, EventArgs e)
         {
-            if (NameTextBox.Text.Length > 0 && NameTextBox.Text.Length  <= 200)
+            if (NameTextBox.Text.Length  <= 200)
             {
                 NameTextBox.BackColor = Color.White;
             }
@@ -92,7 +92,7 @@ namespace ObjectOrientedPractics.View.Tabs
         //Редактирование поля описание + валидация
         private void DescriptionTextBox_Change(object sender, EventArgs e)
         {
-            if (DescriptionTextBox.Text.Length > 0 && DescriptionTextBox.Text.Length <= 1000)
+            if (DescriptionTextBox.Text.Length <= 1000)
             {
                 DescriptionTextBox.BackColor = Color.White;
             }

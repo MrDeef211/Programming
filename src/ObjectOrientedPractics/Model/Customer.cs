@@ -51,7 +51,10 @@ namespace ObjectOrientedPractics.Model
         /// <param name="address">адресс</param>
         public Customer(string fullname, Address address) 
         { 
-            FullName = fullname;   
+            if (fullname != "")
+                FullName = fullname;
+            else 
+                FullName = Id.ToString();
             Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
         }
         //Отображение

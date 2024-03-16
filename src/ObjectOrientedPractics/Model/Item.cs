@@ -78,7 +78,10 @@ namespace ObjectOrientedPractics.Model
         /// <param name="category">категория товара</param>
         public Item(string name, string info, double cost, Category category)
         {
-            Name = name;
+            if (name != "")
+                Name = name;
+            else
+                Name = Id.ToString();
             Info = info;
             Cost = cost;
             Category = category;
