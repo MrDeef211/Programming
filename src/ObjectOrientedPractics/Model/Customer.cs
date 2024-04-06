@@ -24,6 +24,8 @@ namespace ObjectOrientedPractics.Model
         private string _fullname;
         //Адресс
         private Address _address;
+        //Заказы
+        private List<Order> _orders;
 
 
         
@@ -43,6 +45,12 @@ namespace ObjectOrientedPractics.Model
         public int Id
         {
             get { return _id; }
+        }
+        //Заказы
+        public List<Order> Orders
+        {
+            set { _orders = value; }
+            get { return _orders; }
         }
         /// <summary>
         /// Конструктор
