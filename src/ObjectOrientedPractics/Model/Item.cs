@@ -10,7 +10,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Товар
     /// </summary>
-    internal class Item
+    public class Item
     {
         //генератор айди
         private static int _count = 0;
@@ -43,7 +43,7 @@ namespace ObjectOrientedPractics.Model
         {
             set
             {
-                if (value > 0 && value <= 100000)
+                if (value >= 0 && value <= 100000)
                 {
                     _cost = value;
                 }
@@ -78,7 +78,10 @@ namespace ObjectOrientedPractics.Model
         /// <param name="category">категория товара</param>
         public Item(string name, string info, double cost, Category category)
         {
-            Name = name;
+            if (name != "")
+                Name = name;
+            else
+                Name = Id.ToString();
             Info = info;
             Cost = cost;
             Category = category;

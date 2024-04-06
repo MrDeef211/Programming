@@ -16,6 +16,30 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class CustomersTab : UserControl
     {
+        private List<Customer> _customers = new List<Customer>();
+
+        public List<Customer> Customer
+        {
+            get { return _customers; }
+            set { _customers = value; }
+        }
+
+        public void UppdateListBox(List<Customer> newCustomer)
+        {
+            CustomersListBox.Items.Clear();
+            CustomersListBox.SelectedIndex = -1;
+            ClearInputs();
+            for (int i = 0;  i < newCustomer.Count; i++)
+            {
+                CustomersListBox.Items.Add(newCustomer[i].FullName);
+            }
+
+        }
+
+        public void ClearInputs()
+        {
+
+        }
 
         public CustomersTab()
         {
@@ -67,7 +91,7 @@ namespace ObjectOrientedPractics.View.Tabs
         //Изменение поля имени + валидация
         private void FullNameTextBox_Change(object sender, EventArgs e)
         {
-            if (FullNameTextBox.Text.Length > 0 && FullNameTextBox.Text.Length <= 200)
+            if (FullNameTextBox.Text.Length <= 200)
             {
                 FullNameTextBox.BackColor = Color.White;
             }
@@ -101,6 +125,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void ItemsListBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             CustomersListBox.SelectedIndex = -1;
+            CustomersListBox_SelectedIndexChanged(sender, e);
         }
 
         //Сброс выделения при нажатии пкм
@@ -109,7 +134,13 @@ namespace ObjectOrientedPractics.View.Tabs
             if (e.Button == MouseButtons.Right)
             {
                 CustomersListBox.SelectedIndex = -1;
+                CustomersListBox_SelectedIndexChanged(sender, e);
             }
+        }
+
+        private void AddressControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

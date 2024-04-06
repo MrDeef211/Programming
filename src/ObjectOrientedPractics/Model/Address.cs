@@ -81,11 +81,11 @@ namespace ObjectOrientedPractics.Model
         public Address ()
         {
             Index = 111111;
-            Country = "-";
-            City = "-";
-            Street = "-";
-            Building = "-";
-            Apartment = "-";
+            Country = "";
+            City = "";
+            Street = "";
+            Building = "";
+            Apartment = "";
         }
 
         /// <summary>

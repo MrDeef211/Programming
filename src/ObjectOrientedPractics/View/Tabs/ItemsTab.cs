@@ -15,6 +15,28 @@ namespace ObjectOrientedPractics.View.Tabs
     public partial class ItemsTab : UserControl
     {
         
+        private List<Item> _items = new List<Item>();
+
+        public List<Item> Items
+        {
+            get { return _items; }
+            set
+            {
+                UppdateListBox(value);
+                _items = value;
+            }
+        }
+
+        public void UppdateListBox(List<Item> newItems)
+        {
+            ItemsListBox.Items.Clear();
+            ItemsListBox.SelectedIndex = -1;
+            ClearInputs();
+            for (int i = 0; i < newItems.Count; i++)
+            {
+                ItemsListBox.Items.Add(newItems[i].Name);
+            }
+        }
 
         public ItemsTab()
         {
@@ -30,8 +52,11 @@ namespace ObjectOrientedPractics.View.Tabs
             //Проверка пройденной валидации
             if (NameTextBox.BackColor != Color.Red && DescriptionTextBox.BackColor != Color.Red && CostTextBox.BackColor != Color.Red)
             {
-                //Стоимость
-                double bufferCost = double.Parse(CostTextBox.Text);
+                //Стоимость в число
+                double bufferCost;
+                if (!double.TryParse(CostTextBox.Text, out bufferCost))
+                    bufferCost = 0;
+
                 //Что выделенно
                 if (ItemsListBox.SelectedIndex != -1)
                 {
@@ -56,7 +81,7 @@ namespace ObjectOrientedPractics.View.Tabs
         //Редактирование поля имени + валидация
         private void NameTextBox_Change(object sender, EventArgs e)
         {
-            if (NameTextBox.Text.Length > 0 && NameTextBox.Text.Length  <= 200)
+            if (NameTextBox.Text.Length  <= 200)
             {
                 NameTextBox.BackColor = Color.White;
             }
@@ -70,7 +95,7 @@ namespace ObjectOrientedPractics.View.Tabs
         //Редактирование поля описание + валидация
         private void DescriptionTextBox_Change(object sender, EventArgs e)
         {
-            if (DescriptionTextBox.Text.Length > 0 && DescriptionTextBox.Text.Length <= 1000)
+            if (DescriptionTextBox.Text.Length <= 1000)
             {
                 DescriptionTextBox.BackColor = Color.White;
             }
@@ -87,7 +112,7 @@ namespace ObjectOrientedPractics.View.Tabs
             float bufferCost;
             if (float.TryParse(CostTextBox.Text, out bufferCost))
             {
-                if (bufferCost > 0 && bufferCost <= 100000)
+                if (bufferCost >= 0 && bufferCost <= 100000)
                 {
                     CostTextBox.BackColor = Color.White;
                 }
@@ -98,7 +123,8 @@ namespace ObjectOrientedPractics.View.Tabs
             }
             else
             {
-                CostTextBox.BackColor = Color.Red;
+                if (CostTextBox.Text != "")
+                    CostTextBox.BackColor = Color.Red;  
             }
 
         }
@@ -143,6 +169,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void ItemsListBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ItemsListBox.SelectedIndex = -1;
+            ClearInputs();
         }
 
         //Сброс выделения при нажатии пкм
@@ -151,6 +178,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (e.Button == MouseButtons.Right)
             {
                 ItemsListBox.SelectedIndex = -1;
+                ClearInputs();
             }
         }
     }

@@ -21,7 +21,7 @@ namespace ObjectOrientedPractics.Servises
         /// <exception cref="ArgumentException">Вызывает исключение, если переменная не прошла валидацию</exception>
         public static string AssertStringOnLength(string value, int maxLength, string propertyName)
         {
-            if (value.Length > 0 && value.Length <= maxLength) 
+            if (value.Length <= maxLength) 
             { 
                 return value;
             }
