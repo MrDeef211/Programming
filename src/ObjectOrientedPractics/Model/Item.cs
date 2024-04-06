@@ -99,6 +99,7 @@ namespace ObjectOrientedPractics.Model
     /// </summary>
     public enum Category
     {
+        None,
         Toy,
         Food,
         Electronic,

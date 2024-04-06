@@ -124,7 +124,7 @@ namespace ObjectOrientedPractics.View.Tabs
             else
             {
                 if (CostTextBox.Text != "")
-                    CostTextBox.BackColor = Color.Red;  
+                    CostTextBox.BackColor = Color.Red;
             }
 
         }
