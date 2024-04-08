@@ -68,6 +68,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     selectedItem.Name = NameTextBox.Text;
                     selectedItem.Info = DescriptionTextBox.Text;
                     ItemsListBox.Items[index] = selectedItem;
+
                 }
                 else
                 {
