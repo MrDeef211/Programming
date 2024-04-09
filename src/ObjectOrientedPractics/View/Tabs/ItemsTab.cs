@@ -32,9 +32,12 @@ namespace ObjectOrientedPractics.View.Tabs
             ItemsListBox.Items.Clear();
             ItemsListBox.SelectedIndex = -1;
             ClearInputs();
-            for (int i = 0; i < newItems.Count; i++)
+            if (newItems != null)
             {
-                ItemsListBox.Items.Add(newItems[i].Name);
+                for (int i = 0; i < newItems.Count; i++)
+                {
+                    ItemsListBox.Items.Add(newItems[i].Name);
+                }
             }
         }
 

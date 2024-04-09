@@ -18,11 +18,11 @@ namespace ObjectOrientedPractics.View.Tabs
     {
         private List<Customer> _customers = new List<Customer>();
 
-        public List<Customer> Customer
-        {
-            get { return _customers; }
-            set { _customers = value; }
-        }
+        //public List<Customer> Customer
+        //{
+        //    get { return _customers; }
+        //    set { _customers = value; }
+        //}
 
         public void UppdateListBox(List<Customer> newCustomer)
         {
