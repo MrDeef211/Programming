@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,9 +13,9 @@ namespace ObjectOrientedPractics.Model
         // генератор айди
         private static int _count = 0;
         // айди
-        private readonly int _id = _count++;
+        private readonly int _id;
         // дата создания заказа
-        private readonly DateTime _date = DateTime.UtcNow;
+        private readonly DateTime _date;
         // адресс доставки
         private Address _address;
         // список товаров
@@ -23,6 +24,19 @@ namespace ObjectOrientedPractics.Model
         private double _cost;
         //Статус заказа
         private OrderStatus _status;
+        //Заказчик
+        private Customer _customer;
+
+        // айди
+        public int Id
+        {
+            get { return _id; }
+        }
+
+        public DateTime Date
+        {
+            get { return _date; }
+        }
 
         // адресс
         public Address Address
@@ -52,20 +66,49 @@ namespace ObjectOrientedPractics.Model
             set { _status = value; }
         }
 
+        //Заказчик
+        public Customer Customer
+        {
+            set { _customer = value; }
+            get { return _customer; }
+        }
+
         /// <summary>
-        /// 
+        /// Заказ покупателя
         /// </summary>
         /// <param name="name">имя заказа</param>
         /// <param name="address">адресс доставки</param>
         /// <param name="items">список товаров</param>
         /// <param name="cost">общая стоимость</param>
+        /// <param name="status">статус заказа</param>
         public Order(Address address, List<Item> items, double cost, OrderStatus status)
         {
+            _id = _count++;
+            _date = DateTime.UtcNow;
             Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
             Items = new List<Item>(items);
             Cost = cost;
             Status = status;
         }
+
+        /// <summary>
+        /// Заказ на покупателя
+        /// </summary>
+        /// <param name="address">адресс доставки</param>
+        /// <param name="cost">общая стоимость</param>
+        /// <param name="status">статус заказа</param>
+        /// <param name="customer">заказчик</param>
+        public Order(int Id,DateTime date, Address address, double cost, OrderStatus status, Customer customer, List<Item> items)
+        {
+            _id = Id;
+            _date = date;
+            Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
+            Cost = cost;
+            Status = status;
+            Customer = customer;
+            Items = new List<Item>(items);
+        }
+
 
     }
 

@@ -137,6 +137,10 @@ namespace ObjectOrientedPractics.View.Tabs
         //Создание заказа
         private void CreateButton_Click(object sender, EventArgs e)
         {
+            if(CartListBox.Items.Count == 0)
+            {
+                return;
+            }
             CurrentCustomer.Orders.Add(new Order(CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, OrderStatus.New));
             ClearButton_Click(sender, e);
         }

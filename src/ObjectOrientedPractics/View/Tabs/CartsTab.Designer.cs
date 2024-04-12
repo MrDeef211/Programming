@@ -39,10 +39,10 @@
             this.CartListBox = new System.Windows.Forms.ListBox();
             this.CustomerComboBox = new System.Windows.Forms.ComboBox();
             this.ButtonPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.ClearButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer)).BeginInit();
             this.SplitContainer.Panel1.SuspendLayout();
             this.SplitContainer.Panel2.SuspendLayout();
@@ -98,7 +98,7 @@
             this.AmountText.AutoSize = true;
             this.AmountText.Dock = System.Windows.Forms.DockStyle.Right;
             this.AmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AmountText.Location = new System.Drawing.Point(66, 0);
+            this.AmountText.Location = new System.Drawing.Point(105, 0);
             this.AmountText.Name = "AmountText";
             this.AmountText.Size = new System.Drawing.Size(24, 25);
             this.AmountText.TabIndex = 4;
@@ -192,6 +192,16 @@
             this.ButtonPanel.Size = new System.Drawing.Size(355, 105);
             this.ButtonPanel.TabIndex = 11;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.AmountText);
+            this.panel1.Location = new System.Drawing.Point(223, 19);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(129, 33);
+            this.panel1.TabIndex = 11;
+            // 
             // ClearButton
             // 
             this.ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -223,16 +233,6 @@
             this.RemoveButton.Text = "Remove Item";
             this.RemoveButton.UseVisualStyleBackColor = true;
             this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.AmountText);
-            this.panel1.Location = new System.Drawing.Point(262, 19);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(90, 33);
-            this.panel1.TabIndex = 11;
             // 
             // CartsTab
             // 

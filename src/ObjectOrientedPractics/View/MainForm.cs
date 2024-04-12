@@ -24,6 +24,7 @@ namespace ObjectOrientedPractics.View
             CartsTab.Customers = _store.Customers;
             ItemsTab.Items = _store.Items;
             CartsTab.Items = _store.Items;
+            OrdersTab.Customers = _store.Customers;
 
 
         }
@@ -43,6 +44,17 @@ namespace ObjectOrientedPractics.View
         private void tabPage2_Leave(object sender, EventArgs e)
         {
             _store.Customers = CustomersTab.Customers;
+        }
+
+        private void Orders_Enter(object sender, EventArgs e)
+        {
+            OrdersTab.Customers = _store.Customers;
+            ordersTab.UpdatePage();
+        }
+
+        private void Orders_Leave(object sender, EventArgs e)
+        {
+            _store.Customers = CartsTab.Customers;
         }
     }
 }

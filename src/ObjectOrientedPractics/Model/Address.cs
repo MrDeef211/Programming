@@ -106,5 +106,11 @@ namespace ObjectOrientedPractics.Model
             Building = building;
             Apartment = apartment;
         }
+
+        //Отображение
+        public override string ToString()
+        {
+            return (City + " " + Street + " " + Building + " " + Apartment); // Возвращаем значение свойства Fullname
+        }
     }
 }

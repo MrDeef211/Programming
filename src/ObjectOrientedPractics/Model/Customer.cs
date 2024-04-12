@@ -73,6 +73,7 @@ namespace ObjectOrientedPractics.Model
                 FullName = Id.ToString();
             Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
             Cart = new Cart();
+            Orders = new List<Order>();
         }
         //Отображение
         public override string ToString()
