@@ -15,16 +15,12 @@ namespace ObjectOrientedPractics.View.Tabs
     public partial class ItemsTab : UserControl
     {
         
-        private List<Item> _items = new List<Item>();
+        private static List<Item> _items = new List<Item>();
 
-        public List<Item> Items
+        public static List<Item> Items
         {
             get { return _items; }
-            set
-            {
-                UppdateListBox(value);
-                _items = value;
-            }
+            set { _items = value; }
         }
 
         public void UppdateListBox(List<Item> newItems)
@@ -71,6 +67,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     selectedItem.Name = NameTextBox.Text;
                     selectedItem.Info = DescriptionTextBox.Text;
                     ItemsListBox.Items[index] = selectedItem;
+                    Items[index] = selectedItem;
 
                 }
                 else
@@ -78,6 +75,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     //Создание нового обьекта
                     Item newItem = new Item(NameTextBox.Text, DescriptionTextBox.Text, bufferCost, (Category)CategoryComboBox.SelectedIndex);
                     ItemsListBox.Items.Add(newItem);
+                    Items.Add(newItem);
                 }
             }
         }
@@ -165,6 +163,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (index != -1)
             {
                 ItemsListBox.Items.RemoveAt(index);
+                Items.RemoveAt(index);
                 ClearInputs();
             }
         }

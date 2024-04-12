@@ -16,13 +16,13 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class CustomersTab : UserControl
     {
-        private List<Customer> _customers = new List<Customer>();
+        private static List<Customer> _customers = new List<Customer>();
 
-        //public List<Customer> Customer
-        //{
-        //    get { return _customers; }
-        //    set { _customers = value; }
-        //}
+        public static List<Customer> Customers
+        {
+            get { return _customers; }
+            set { _customers = value; }
+        }
 
         public void UppdateListBox(List<Customer> newCustomer)
         {
@@ -64,6 +64,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     selectedCustomer.FullName = FullNameTextBox.Text;
                     selectedCustomer.Address = AddressControl.Address;
                     CustomersListBox.Items[index] = selectedCustomer;
+                    Customers[index] = selectedCustomer;
                     
                 }
                 else
@@ -71,6 +72,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     //Добавление нового обьекта
                     Customer newCustomer = new Customer(FullNameTextBox.Text, AddressControl.Address);
                     CustomersListBox.Items.Add(newCustomer);
+                    Customers.Add(newCustomer);
                 }
             }
         }
@@ -83,6 +85,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (index != -1)
             {
                 CustomersListBox.Items.RemoveAt(index);
+                Customers.RemoveAt(index);
                 CustomersListBox.SelectedIndex = -1;
                 CustomersListBox_SelectedIndexChanged(sender,e);
             }

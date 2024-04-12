@@ -37,17 +37,18 @@
             this.SplitContainer = new System.Windows.Forms.SplitContainer();
             this.AddButton = new System.Windows.Forms.Button();
             this.CartListBox = new System.Windows.Forms.ListBox();
-            this.CustomerComboBox1 = new System.Windows.Forms.ComboBox();
+            this.CustomerComboBox = new System.Windows.Forms.ComboBox();
             this.ButtonPanel = new System.Windows.Forms.Panel();
             this.ClearButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer)).BeginInit();
             this.SplitContainer.Panel1.SuspendLayout();
             this.SplitContainer.Panel2.SuspendLayout();
             this.SplitContainer.SuspendLayout();
             this.ButtonPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ItemsLabel
@@ -94,15 +95,14 @@
             // 
             // AmountText
             // 
-            this.AmountText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.AmountText.AutoSize = true;
+            this.AmountText.Dock = System.Windows.Forms.DockStyle.Right;
             this.AmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AmountText.Location = new System.Drawing.Point(278, 28);
+            this.AmountText.Location = new System.Drawing.Point(66, 0);
             this.AmountText.Name = "AmountText";
-            this.AmountText.Size = new System.Drawing.Size(70, 25);
+            this.AmountText.Size = new System.Drawing.Size(24, 25);
             this.AmountText.TabIndex = 4;
-            this.AmountText.Text = "label5";
+            this.AmountText.Text = "0";
             // 
             // ItemsListBox
             // 
@@ -115,6 +115,8 @@
             this.ItemsListBox.Name = "ItemsListBox";
             this.ItemsListBox.Size = new System.Drawing.Size(245, 404);
             this.ItemsListBox.TabIndex = 5;
+            this.ItemsListBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ItemsListBox_KeyPress);
+            this.ItemsListBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ItemsListBox_MouseDown);
             // 
             // SplitContainer
             // 
@@ -132,7 +134,7 @@
             // 
             this.SplitContainer.Panel2.Controls.Add(this.CartListBox);
             this.SplitContainer.Panel2.Controls.Add(this.CartLabel);
-            this.SplitContainer.Panel2.Controls.Add(this.CustomerComboBox1);
+            this.SplitContainer.Panel2.Controls.Add(this.CustomerComboBox);
             this.SplitContainer.Panel2.Controls.Add(this.CustomerLabel);
             this.SplitContainer.Panel2.Controls.Add(this.ButtonPanel);
             this.SplitContainer.Size = new System.Drawing.Size(650, 500);
@@ -148,6 +150,7 @@
             this.AddButton.TabIndex = 7;
             this.AddButton.Text = "Add To Cart";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // CartListBox
             // 
@@ -159,25 +162,29 @@
             this.CartListBox.Name = "CartListBox";
             this.CartListBox.Size = new System.Drawing.Size(348, 196);
             this.CartListBox.TabIndex = 6;
+            this.CartListBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CartListBox_MouseDown);
             // 
-            // CustomerComboBox1
+            // CustomerComboBox
             // 
-            this.CustomerComboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CustomerComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CustomerComboBox1.FormattingEnabled = true;
-            this.CustomerComboBox1.Location = new System.Drawing.Point(95, 22);
-            this.CustomerComboBox1.Name = "CustomerComboBox1";
-            this.CustomerComboBox1.Size = new System.Drawing.Size(273, 24);
-            this.CustomerComboBox1.TabIndex = 2;
+            this.CustomerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CustomerComboBox.FormattingEnabled = true;
+            this.CustomerComboBox.Location = new System.Drawing.Point(95, 22);
+            this.CustomerComboBox.Name = "CustomerComboBox";
+            this.CustomerComboBox.Size = new System.Drawing.Size(273, 24);
+            this.CustomerComboBox.TabIndex = 2;
+            this.CustomerComboBox.SelectedIndexChanged += new System.EventHandler(this.CustomerComboBox_SelectedIndexChanged);
+            this.CustomerComboBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CustomerComboBox_MouseDown);
             // 
             // ButtonPanel
             // 
             this.ButtonPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonPanel.Controls.Add(this.panel1);
             this.ButtonPanel.Controls.Add(this.ClearButton);
             this.ButtonPanel.Controls.Add(this.CreateButton);
-            this.ButtonPanel.Controls.Add(this.AmountText);
             this.ButtonPanel.Controls.Add(this.AmountLabel);
             this.ButtonPanel.Controls.Add(this.RemoveButton);
             this.ButtonPanel.Location = new System.Drawing.Point(13, 281);
@@ -194,6 +201,7 @@
             this.ClearButton.TabIndex = 10;
             this.ClearButton.Text = "Clear Cart";
             this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // CreateButton
             // 
@@ -203,6 +211,7 @@
             this.CreateButton.TabIndex = 8;
             this.CreateButton.Text = "Create Order";
             this.CreateButton.UseVisualStyleBackColor = true;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // RemoveButton
             // 
@@ -213,6 +222,17 @@
             this.RemoveButton.TabIndex = 9;
             this.RemoveButton.Text = "Remove Item";
             this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.AmountText);
+            this.panel1.Location = new System.Drawing.Point(262, 19);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(90, 33);
+            this.panel1.TabIndex = 11;
             // 
             // CartsTab
             // 
@@ -230,6 +250,8 @@
             this.SplitContainer.ResumeLayout(false);
             this.ButtonPanel.ResumeLayout(false);
             this.ButtonPanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -243,13 +265,13 @@
         private System.Windows.Forms.Label AmountText;
         private System.Windows.Forms.ListBox ItemsListBox;
         private System.Windows.Forms.SplitContainer SplitContainer;
-        private System.Windows.Forms.ComboBox CustomerComboBox1;
-        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.ComboBox CustomerComboBox;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.ListBox CartListBox;
         private System.Windows.Forms.Panel ButtonPanel;
+        private System.Windows.Forms.Panel panel1;
     }
 }

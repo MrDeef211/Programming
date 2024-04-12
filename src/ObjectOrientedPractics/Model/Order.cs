@@ -15,21 +15,14 @@ namespace ObjectOrientedPractics.Model
         private readonly int _id = _count++;
         // дата создания заказа
         private readonly DateTime _date = DateTime.UtcNow;
-        // имя заказа
-        private string _name;
         // адресс доставки
         private Address _address;
         // список товаров
         private List<Item> _items;
         // общая стоимость
-        private int _cost;
-
-        // имя заказа
-        public string Name
-        {
-            set { _name = ValueValidator.AssertStringOnLength(value, 200, "name"); }
-            get { return _name; }
-        }
+        private double _cost;
+        //Статус заказа
+        private OrderStatus _status;
 
         // адресс
         public Address Address
@@ -46,10 +39,17 @@ namespace ObjectOrientedPractics.Model
         }
 
         // общая стоимость
-        public int Cost
+        public double Cost
         { 
             set { _cost = value; }
             get { return _cost; }
+        }
+
+        //Статус заказа
+        public OrderStatus Status
+        { 
+            get { return _status; }
+            set { _status = value; }
         }
 
         /// <summary>
@@ -59,11 +59,12 @@ namespace ObjectOrientedPractics.Model
         /// <param name="address">адресс доставки</param>
         /// <param name="items">список товаров</param>
         /// <param name="cost">общая стоимость</param>
-        public Order(string name, Address address, List<Item> items, int cost)
+        public Order(Address address, List<Item> items, double cost, OrderStatus status)
         {
-            Name = name;
-            Address = address;
-            Items = items;
+            Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
+            Items = new List<Item>(items);
+            Cost = cost;
+            Status = status;
         }
 
     }
