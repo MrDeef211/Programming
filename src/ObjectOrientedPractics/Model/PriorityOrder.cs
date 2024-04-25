@@ -9,14 +9,14 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ObjectOrientedPractics.Model
 {
-    internal class PriorityOrder : Order 
+    public class PriorityOrder : Order 
     {
         //Дата доставки
         private DateTime _deliveryDate;
         //Время доставки
         private string _deliveryTime;
         //Возможные переоды доставки
-        private string[] _deliveryTimes = {
+        private static string[] _deliveryTimes = {
             "9:00 – 11:00",
             "11:00 – 13:00",
             "3:00 – 15:00",
@@ -31,6 +31,8 @@ namespace ObjectOrientedPractics.Model
             set { _deliveryDate = value; }
             get { return _deliveryDate; }
         }
+
+        public static string[] DeliveryTimes { get { return _deliveryTimes; } }
 
         //Время доставки
         public string DeliveryTime
@@ -64,6 +66,8 @@ namespace ObjectOrientedPractics.Model
             DeliveryDate = deliveryDate;
             DeliveryTime = deliveryTime;
         }
+
+        public PriorityOrder() : base() { }
     }
 
 }

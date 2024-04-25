@@ -27,6 +27,7 @@ namespace ObjectOrientedPractics.View
             OrdersTab.Customers = _store.Customers;
 
 
+
         }
 
         private void tabPage3_Enter(object sender, EventArgs e)
@@ -39,6 +40,9 @@ namespace ObjectOrientedPractics.View
         private void tabPage1_Leave(object sender, EventArgs e)
         {
             _store.Items = ItemsTab.Items;
+            //Обновление этой хрени
+            PriorityOrdersTab.Items = _store.Items;
+            priorityOrdersTab1.UpdatePage();
         }
 
         private void tabPage2_Leave(object sender, EventArgs e)

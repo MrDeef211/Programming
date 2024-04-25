@@ -113,7 +113,7 @@ namespace ObjectOrientedPractics.Model
         {
             _id = _count++;
             _date = DateTime.UtcNow;
-
+            Items = new List<Item>();
         }
 
 
