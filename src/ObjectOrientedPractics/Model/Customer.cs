@@ -24,6 +24,8 @@ namespace ObjectOrientedPractics.Model
         private string _fullname;
         //Адресс
         private Address _address;
+        //Корзина
+        private Cart _cart;
         //Заказы
         private List<Order> _orders;
 
@@ -46,6 +48,12 @@ namespace ObjectOrientedPractics.Model
         {
             get { return _id; }
         }
+        //Корзина
+        public Cart Cart
+        {
+            set { _cart = value; }
+            get { return _cart; }
+        }
         //Заказы
         public List<Order> Orders
         {
@@ -64,6 +72,8 @@ namespace ObjectOrientedPractics.Model
             else 
                 FullName = Id.ToString();
             Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
+            Cart = new Cart();
+            Orders = new List<Order>();
         }
         //Отображение
         public override string ToString()

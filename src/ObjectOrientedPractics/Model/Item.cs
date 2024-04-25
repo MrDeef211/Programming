@@ -10,6 +10,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Товар
     /// </summary>
+    [Serializable]
     public class Item
     {
         //генератор айди

@@ -15,7 +15,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Список пользователей
         /// </summary>
-        private List <Customer> _customer;
+        private List <Customer> _customers;
 
         /// <summary>
         /// Св-во поля _items
@@ -29,10 +29,10 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Св-во поля _customer
         /// </summary>
-        public List<Customer> Customer
+        public List<Customer> Customers
         { 
-            get { return _customer; } 
-            set {  _customer = value; } 
+            get { return _customers; } 
+            set {  _customers = value; } 
         }
         
         /// <summary>
@@ -41,7 +41,7 @@ namespace ObjectOrientedPractics.Model
         public Store()
         {
             _items = new List <Item> ();
-            _customer = new List <Customer> ();
+            _customers = new List <Customer> ();
         }
     }
 }
