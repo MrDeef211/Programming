@@ -14,6 +14,8 @@ namespace ObjectOrientedPractics.View.Tabs
     public partial class OrdersTab : UserControl
     {
         private static List<Order> _orders;
+        private Order _selectedOrder;
+        private PriorityOrder _selectedPriorityOrder;
 
         private static List<Order> Orders
         {
@@ -27,16 +29,43 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             set
             {
-                Orders.Clear();
                 foreach (Customer thisCustomer in value) 
                 { 
                     // наличие заказов
                     if (thisCustomer.Orders != null) 
                     {
                         //Перенос заказов
-                        foreach (Order thisOrder in thisCustomer.Orders)
+                        foreach (var thisOrder in thisCustomer.Orders)
                         {
-                            Orders.Add(new Order(thisOrder.Id, thisOrder.Date, thisOrder.Address, thisOrder.Cost, thisOrder.Status, thisCustomer, thisOrder.Items));
+                            
+                            bool skip = false;
+                            //Проверка существующих заказов по индексу
+                            foreach (var O in Orders)
+                            {
+                                if (O.Id == thisOrder.Id)
+                                {
+                                    //Пропуск существующего заказа
+                                    skip = true;
+                                    break;
+                                }
+                            }
+
+                            //Пропуск существующего заказа
+                            if (skip)
+                            {
+                                continue;
+                            }
+
+
+                            if (thisOrder is PriorityOrder priority)
+                            {
+                                Orders.Add(new PriorityOrder(thisOrder.Id, thisOrder.Date, thisOrder.Address, thisOrder.Cost, thisOrder.Status, thisCustomer, thisOrder.Items));
+                            }
+                            else
+                            {
+                                Orders.Add(new Order(thisOrder.Id, thisOrder.Date, thisOrder.Address, thisOrder.Cost, thisOrder.Status, thisCustomer, thisOrder.Items));
+                            }
+
                         }
                     }
 
@@ -49,6 +78,7 @@ namespace ObjectOrientedPractics.View.Tabs
             InitializeComponent();
             Orders = new List<Order>();
             StatusComboBox.DataSource = Enum.GetValues(typeof(OrderStatus));
+            DeliveryTimeComboBox.DataSource = PriorityOrder.DeliveryTimes;
         }
 
         /// <summary>
@@ -66,26 +96,51 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void StatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (OrdersGridView.CurrentCell != null && OrdersGridView.CurrentCell.RowIndex != -1)
+            if (_selectedOrder != null)
             {
-                Orders[OrdersGridView.CurrentCell.RowIndex].Status = (OrderStatus)StatusComboBox.SelectedItem;
+                _selectedOrder.Status = (OrderStatus)StatusComboBox.SelectedItem;
+                UpdatePage();
+            }
+        }
+
+        private void DeliveryTimeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_selectedPriorityOrder != null && DeliveryTimeComboBox.SelectedItem != null)
+            {
+                _selectedPriorityOrder.DeliveryTime = DeliveryTimeComboBox.SelectedItem.ToString();
                 UpdatePage();
             }
         }
 
         private void OrdersGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            Order currentOrder = Orders[OrdersGridView.CurrentCell.RowIndex];
-            IDTextBox.Text = currentOrder.Id.ToString();
-            DataTextBox.Text = currentOrder.Date.ToString();
-            StatusComboBox.SelectedItem = currentOrder.Status;
-            AddressControl.Address = currentOrder.Address;
+            _selectedOrder = Orders[OrdersGridView.CurrentCell.RowIndex];
+
+            //Проверка приоритета
+            if (Orders[OrdersGridView.CurrentCell.RowIndex] is PriorityOrder priority)
+            {
+                _selectedPriorityOrder = (PriorityOrder)Orders[OrdersGridView.CurrentCell.RowIndex];
+                PriorityPanel.Visible = true;
+                DeliveryTimeComboBox.SelectedItem = _selectedPriorityOrder.DeliveryTime;
+            }
+            else
+            {
+                _selectedPriorityOrder = null;
+                PriorityPanel.Visible = false;
+            }
+
+            IDTextBox.Text = _selectedOrder.Id.ToString();
+            DataTextBox.Text = _selectedOrder.Date.ToString();
+            StatusComboBox.SelectedItem = _selectedOrder.Status;
+            AddressControl.Address = _selectedOrder.Address;
             ItemListBox.Items.Clear();
-            foreach (Item thisitem in currentOrder.Items)
+            foreach (Item thisitem in _selectedOrder.Items)
             {
                 ItemListBox.Items.Add(thisitem);
             }
 
         }
+
+
     }
 }
