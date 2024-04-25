@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            ObjectOrientedPractics.Model.Address address3 = new ObjectOrientedPractics.Model.Address();
+            ObjectOrientedPractics.Model.Address address2 = new ObjectOrientedPractics.Model.Address();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.OrdersLabel = new System.Windows.Forms.Label();
             this.OrdersGridView = new System.Windows.Forms.DataGridView();
@@ -46,28 +45,12 @@
             this.DateLabel = new System.Windows.Forms.Label();
             this.IDLabel = new System.Windows.Forms.Label();
             this.SelectedOrderLabel = new System.Windows.Forms.Label();
-            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.storeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.customersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ordersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.ordersTabBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ordersTabBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.itemsTabBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersTabBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersTabBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsTabBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -142,6 +125,7 @@
             // 
             this.DataTextBox.Location = new System.Drawing.Point(76, 56);
             this.DataTextBox.Name = "DataTextBox";
+            this.DataTextBox.ReadOnly = true;
             this.DataTextBox.Size = new System.Drawing.Size(172, 22);
             this.DataTextBox.TabIndex = 14;
             // 
@@ -149,6 +133,7 @@
             // 
             this.IDTextBox.Location = new System.Drawing.Point(76, 29);
             this.IDTextBox.Name = "IDTextBox";
+            this.IDTextBox.ReadOnly = true;
             this.IDTextBox.Size = new System.Drawing.Size(172, 22);
             this.IDTextBox.TabIndex = 13;
             // 
@@ -205,13 +190,13 @@
             // 
             // AddressControl
             // 
-            address3.Apartment = "";
-            address3.Building = "";
-            address3.City = "";
-            address3.Country = "";
-            address3.Index = 111111;
-            address3.Street = "";
-            this.AddressControl.Address = address3;
+            address2.Apartment = "";
+            address2.Building = "";
+            address2.City = "";
+            address2.Country = "";
+            address2.Index = 111111;
+            address2.Street = "";
+            this.AddressControl.Address = address2;
             this.AddressControl.Location = new System.Drawing.Point(15, 117);
             this.AddressControl.Name = "AddressControl";
             this.AddressControl.Size = new System.Drawing.Size(467, 187);
@@ -254,42 +239,6 @@
             this.SelectedOrderLabel.TabIndex = 1;
             this.SelectedOrderLabel.Text = "SelectedOrder";
             // 
-            // customersBindingSource
-            // 
-            this.customersBindingSource.DataMember = "Customers";
-            this.customersBindingSource.DataSource = this.storeBindingSource;
-            // 
-            // storeBindingSource
-            // 
-            this.storeBindingSource.DataSource = typeof(ObjectOrientedPractics.Model.Store);
-            // 
-            // customersBindingSource1
-            // 
-            this.customersBindingSource1.DataMember = "Customers";
-            this.customersBindingSource1.DataSource = this.storeBindingSource;
-            // 
-            // ordersBindingSource
-            // 
-            this.ordersBindingSource.DataMember = "Orders";
-            this.ordersBindingSource.DataSource = this.customersBindingSource;
-            // 
-            // ordersBindingSource1
-            // 
-            this.ordersBindingSource1.DataMember = "Orders";
-            this.ordersBindingSource1.DataSource = this.customersBindingSource1;
-            // 
-            // ordersTabBindingSource
-            // 
-            this.ordersTabBindingSource.DataSource = typeof(ObjectOrientedPractics.View.Tabs.OrdersTab);
-            // 
-            // ordersTabBindingSource1
-            // 
-            this.ordersTabBindingSource1.DataSource = typeof(ObjectOrientedPractics.View.Tabs.OrdersTab);
-            // 
-            // itemsTabBindingSource
-            // 
-            this.itemsTabBindingSource.DataSource = typeof(ObjectOrientedPractics.View.Tabs.ItemsTab);
-            // 
             // OrdersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -307,14 +256,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersTabBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersTabBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsTabBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -337,13 +278,5 @@
         private System.Windows.Forms.ComboBox StatusComboBox;
         private System.Windows.Forms.TextBox DataTextBox;
         private System.Windows.Forms.TextBox IDTextBox;
-        private System.Windows.Forms.BindingSource storeBindingSource;
-        private System.Windows.Forms.BindingSource customersBindingSource1;
-        private System.Windows.Forms.BindingSource customersBindingSource;
-        private System.Windows.Forms.BindingSource ordersBindingSource1;
-        private System.Windows.Forms.BindingSource ordersBindingSource;
-        private System.Windows.Forms.BindingSource ordersTabBindingSource;
-        private System.Windows.Forms.BindingSource ordersTabBindingSource1;
-        private System.Windows.Forms.BindingSource itemsTabBindingSource;
     }
 }
