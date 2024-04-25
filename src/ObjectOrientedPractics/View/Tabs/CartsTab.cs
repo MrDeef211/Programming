@@ -15,8 +15,8 @@ namespace ObjectOrientedPractics.View.Tabs
 
     public partial class CartsTab : UserControl
     {
-        private static List<Customer> _customers = new List<Customer>();
-        private static List<Item> _items = new List<Item>();
+        private static List<Customer> _customers;
+        private static List<Item> _items;
 
         public static List<Customer> Customers
         {

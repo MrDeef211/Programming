@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+
             ObjectOrientedPractics.Model.Address address2 = new ObjectOrientedPractics.Model.Address();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.OrdersLabel = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@
             this.DateLabel = new System.Windows.Forms.Label();
             this.IDLabel = new System.Windows.Forms.Label();
             this.SelectedOrderLabel = new System.Windows.Forms.Label();
+
             this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -58,12 +60,14 @@
             this.ordersTabBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordersTabBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.itemsTabBindingSource = new System.Windows.Forms.BindingSource(this.components);
+
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).BeginInit();
             this.panel1.SuspendLayout();
+
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
@@ -73,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ordersTabBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersTabBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsTabBindingSource)).BeginInit();
+
             this.SuspendLayout();
             // 
             // splitContainer
@@ -148,6 +153,7 @@
             // 
             this.DataTextBox.Location = new System.Drawing.Point(76, 56);
             this.DataTextBox.Name = "DataTextBox";
+            this.DataTextBox.ReadOnly = true;
             this.DataTextBox.Size = new System.Drawing.Size(172, 22);
             this.DataTextBox.TabIndex = 14;
             // 
@@ -155,6 +161,7 @@
             // 
             this.IDTextBox.Location = new System.Drawing.Point(76, 29);
             this.IDTextBox.Name = "IDTextBox";
+            this.IDTextBox.ReadOnly = true;
             this.IDTextBox.Size = new System.Drawing.Size(172, 22);
             this.IDTextBox.TabIndex = 13;
             // 
@@ -208,6 +215,20 @@
             this.ItemListBox.Name = "ItemListBox";
             this.ItemListBox.Size = new System.Drawing.Size(467, 132);
             this.ItemListBox.TabIndex = 6;
+            // 
+            // AddressControl
+            // 
+            address2.Apartment = "";
+            address2.Building = "";
+            address2.City = "";
+            address2.Country = "";
+            address2.Index = 111111;
+            address2.Street = "";
+            this.AddressControl.Address = address2;
+            this.AddressControl.Location = new System.Drawing.Point(15, 117);
+            this.AddressControl.Name = "AddressControl";
+            this.AddressControl.Size = new System.Drawing.Size(467, 187);
+            this.AddressControl.TabIndex = 5;
             // 
             // StatusLabel
             // 
