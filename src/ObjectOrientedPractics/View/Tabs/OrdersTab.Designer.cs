@@ -1,3 +1,4 @@
+
 ﻿namespace ObjectOrientedPractics.View.Tabs
 {
     partial class OrdersTab
@@ -397,3 +398,4 @@
         private System.Windows.Forms.Label DeliveryTimeLabel;
     }
 }
+
