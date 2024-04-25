@@ -109,6 +109,13 @@ namespace ObjectOrientedPractics.Model
             Items = new List<Item>(items);
         }
 
+        public Order()
+        {
+            _id = _count++;
+            _date = DateTime.UtcNow;
+            Items = new List<Item>();
+        }
+
 
     }
 

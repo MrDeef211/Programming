@@ -65,12 +65,13 @@ namespace ObjectOrientedPractics.View.Tabs
                     selectedCustomer.Address = AddressControl.Address;
                     CustomersListBox.Items[index] = selectedCustomer;
                     Customers[index] = selectedCustomer;
+                    selectedCustomer._isPriority = IsPriorityCheckBox.Checked;
                     
                 }
                 else
                 {
                     //Добавление нового обьекта
-                    Customer newCustomer = new Customer(FullNameTextBox.Text, AddressControl.Address);
+                    Customer newCustomer = new Customer(FullNameTextBox.Text, AddressControl.Address, IsPriorityCheckBox.Checked);
                     CustomersListBox.Items.Add(newCustomer);
                     Customers.Add(newCustomer);
                 }
@@ -115,12 +116,14 @@ namespace ObjectOrientedPractics.View.Tabs
                 IDTextBox.Text = selectedCustomer.Id.ToString();
                 FullNameTextBox.Text = selectedCustomer.FullName;
                 AddressControl.Address = selectedCustomer.Address;
+                IsPriorityCheckBox.Checked = selectedCustomer._isPriority;
             }
             else
             {
                 IDTextBox.Text = "";
                 FullNameTextBox.Text = "";
                 AddressControl.Address = new Address();
+                IsPriorityCheckBox.Checked = false;
             }
         }
 

@@ -28,6 +28,8 @@ namespace ObjectOrientedPractics.Model
         private Cart _cart;
         //Заказы
         private List<Order> _orders;
+        //Приоритетный клиент
+        public bool _isPriority;
 
 
         
@@ -65,7 +67,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullname">имяФамилия</param>
         /// <param name="address">адресс</param>
-        public Customer(string fullname, Address address) 
+        public Customer(string fullname, Address address, bool isPriority) 
         { 
             if (fullname != "")
                 FullName = fullname;
@@ -74,6 +76,7 @@ namespace ObjectOrientedPractics.Model
             Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
             Cart = new Cart();
             Orders = new List<Order>();
+            _isPriority = isPriority;
         }
         //Отображение
         public override string ToString()

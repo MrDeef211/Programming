@@ -27,6 +27,7 @@ namespace ObjectOrientedPractics.View
             OrdersTab.Customers = _store.Customers;
 
 
+
         }
 
         private void tabPage3_Enter(object sender, EventArgs e)

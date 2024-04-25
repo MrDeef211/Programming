@@ -41,6 +41,7 @@
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
             this.CustomersLable2 = new System.Windows.Forms.Label();
+            this.IsPriorityCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsSplitContainer)).BeginInit();
             this.ItemsSplitContainer.Panel1.SuspendLayout();
             this.ItemsSplitContainer.Panel2.SuspendLayout();
@@ -65,6 +66,7 @@
             // ItemsSplitContainer.Panel2
             // 
             this.ItemsSplitContainer.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ItemsSplitContainer.Panel2.Controls.Add(this.IsPriorityCheckBox);
             this.ItemsSplitContainer.Panel2.Controls.Add(this.AddressControl);
             this.ItemsSplitContainer.Panel2.Controls.Add(this.CostLabel);
             this.ItemsSplitContainer.Panel2.Controls.Add(this.IDLabel);
@@ -154,7 +156,7 @@
             address1.Index = 111111;
             address1.Street = "";
             this.AddressControl.Address = address1;
-            this.AddressControl.Location = new System.Drawing.Point(9, 98);
+            this.AddressControl.Location = new System.Drawing.Point(7, 123);
             this.AddressControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddressControl.Name = "AddressControl";
             this.AddressControl.Size = new System.Drawing.Size(467, 187);
@@ -208,6 +210,16 @@
             this.CustomersLable2.TabIndex = 10;
             this.CustomersLable2.Text = "Select Customer";
             // 
+            // IsPriorityCheckBox
+            // 
+            this.IsPriorityCheckBox.AutoSize = true;
+            this.IsPriorityCheckBox.Location = new System.Drawing.Point(83, 98);
+            this.IsPriorityCheckBox.Name = "IsPriorityCheckBox";
+            this.IsPriorityCheckBox.Size = new System.Drawing.Size(83, 20);
+            this.IsPriorityCheckBox.TabIndex = 16;
+            this.IsPriorityCheckBox.Text = "Is Priority";
+            this.IsPriorityCheckBox.UseVisualStyleBackColor = true;
+            // 
             // CustomersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -241,5 +253,6 @@
         private System.Windows.Forms.TextBox IDTextBox;
         private System.Windows.Forms.Label CustomersLable2;
         private Controls.AddressControl AddressControl;
+        private System.Windows.Forms.CheckBox IsPriorityCheckBox;
     }
 }

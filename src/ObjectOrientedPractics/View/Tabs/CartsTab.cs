@@ -141,7 +141,14 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 return;
             }
-            CurrentCustomer.Orders.Add(new Order(CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, OrderStatus.New));
+            if(CurrentCustomer._isPriority)
+            {
+                CurrentCustomer.Orders.Add(new PriorityOrder(CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, OrderStatus.New));
+            }
+            else
+            {
+                CurrentCustomer.Orders.Add(new Order(CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, OrderStatus.New));
+            }
             ClearButton_Click(sender, e);
         }
 
