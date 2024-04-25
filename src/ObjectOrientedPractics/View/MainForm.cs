@@ -40,9 +40,6 @@ namespace ObjectOrientedPractics.View
         private void tabPage1_Leave(object sender, EventArgs e)
         {
             _store.Items = ItemsTab.Items;
-            //Обновление этой хрени
-            PriorityOrdersTab.Items = _store.Items;
-            priorityOrdersTab1.UpdatePage();
         }
 
         private void tabPage2_Leave(object sender, EventArgs e)
