@@ -6,28 +6,61 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractics.Model
 {
-    public class PointsDiscount
+    internal class PercentDiscount
     {
-        //Количество накопленных балов
-        private int _points;
+        //Категория скидки
+        private Category _category;
+        //Величина скидки
+        private int _discont;
+        //Сумма покупок
+        private double _amount;
 
         /// <summary>
-        /// Количество накопленных балов
+        /// Категория скидки
         /// </summary>
-        public int Points
+        public Category Category
         {
-            private set { _points = value; }
-            get { return _points; }
+            get { return _category; }
+            set { _category = value; }
         }
 
         /// <summary>
-        /// Возвращает информацию о баллах
+        /// Величина скидки
+        /// </summary>
+        public int Discont
+        {
+            get => _discont;
+            set 
+            { 
+                _discont = value; 
+                if (_discont > 10)
+                {
+                    _discont = 10;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Сумма покупок
+        /// </summary>
+        public double Amount
+        {
+            get => _amount;
+            set 
+            { 
+                _amount = value;
+                Discont = (int)Math.Truncate(_amount * 0.001);
+            }
+        }
+
+        /// <summary>
+        /// Возвращает информацию о скидке
         /// </summary>
         public string Info
         {
-            get 
+            get
             {
-                string info = "Накопительная – " + Points + " баллов";
+                string info = "Процентная «" + Category.ToString() + "» - " + Discont + "%";
                 return (info);
             }
         }
@@ -44,14 +77,17 @@ namespace ObjectOrientedPractics.Model
             double cost = 0;
             foreach (var item in items)
             {
-                cost += item.Cost;
+                if (item.Category == Category)
+                {
+                    cost += item.Cost;
+                }
+
             }
 
-            //Расчёт максимальной скидки
-            double maxDiscont = Math.Truncate(cost * 0.3);
+            //Расчёт скидки
+            double currentDiscont = cost * Discont / 100;
 
-            if ((int)maxDiscont < Points) { return maxDiscont; }
-            else { return Points; }
+            return currentDiscont;
         }
 
         /// <summary>
@@ -63,14 +99,12 @@ namespace ObjectOrientedPractics.Model
         {
             //Расчёт скидки
             double discount = Calculate(items);
-            //Снятие баллов
-            Points -= (int)discount;
 
             return discount;
         }
 
         /// <summary>
-        /// Добавляет баллы на основе полученного списка товаров.
+        /// Добавляет сумму на основе полученного списка товаров.
         /// </summary>
         /// <param name="items">Список продуктов</param>
         public void Update(List<Item> items)
@@ -79,18 +113,14 @@ namespace ObjectOrientedPractics.Model
             double cost = 0;
             foreach (var item in items)
             {
-                cost += item.Cost;
+                if (item.Category == Category)
+                {
+                    cost += item.Cost;
+                }
+
             }
 
-            //Количество добавляемых баллов
-            double newPoints = cost * 0.1;
-            //Округление
-            if ((newPoints % 1) > 0)
-            {
-                newPoints = Math.Truncate(newPoints) + 1;
-            }
-
-            Points += (int)newPoints;
+            Amount += cost;
         }
 
     }
