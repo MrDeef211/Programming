@@ -66,6 +66,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     selectedItem.Cost = bufferCost;
                     selectedItem.Name = NameTextBox.Text;
                     selectedItem.Info = DescriptionTextBox.Text;
+                    selectedItem.Category = (Category)CategoryComboBox.SelectedItem;
                     ItemsListBox.Items[index] = selectedItem;
                     Items[index] = selectedItem;
 
@@ -73,7 +74,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 else
                 {
                     //Создание нового обьекта
-                    Item newItem = new Item(NameTextBox.Text, DescriptionTextBox.Text, bufferCost, (Category)CategoryComboBox.SelectedIndex);
+                    Item newItem = new Item(NameTextBox.Text, DescriptionTextBox.Text, bufferCost, (Category)CategoryComboBox.SelectedItem);
                     ItemsListBox.Items.Add(newItem);
                     Items.Add(newItem);
                 }

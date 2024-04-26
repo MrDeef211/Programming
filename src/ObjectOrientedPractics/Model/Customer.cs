@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using ObjectOrientedPractics.Model.Orders;
+using ObjectOrientedPractics.Model.Discounts;
 
 
 namespace ObjectOrientedPractics.Model
@@ -30,38 +32,70 @@ namespace ObjectOrientedPractics.Model
         private List<Order> _orders;
         //Приоритетный клиент
         public bool _isPriority;
+        //Список скидок
+        private List<IDiscount> _discounts;
 
 
         
-        //имя фамилия
+        /// <summary>
+        /// имя фамилия
+        /// </summary>
         public string FullName
         {
             set { _fullname = ValueValidator.AssertStringOnLength(value, 200, "fullname"); }
             get { return _fullname; }
         }
-        //Адресс
+
+        /// <summary>
+        /// Адресс
+        /// </summary>
         public Address Address
         {
             set { _address = value; }
             get { return _address; }
         }
-        // айди
+
+        /// <summary>
+        /// айди
+        /// </summary>
         public int Id
         {
             get { return _id; }
         }
-        //Корзина
+
+        /// <summary>
+        /// Корзина
+        /// </summary>
         public Cart Cart
         {
             set { _cart = value; }
             get { return _cart; }
         }
-        //Заказы
+
+        /// <summary>
+        /// Заказы
+        /// </summary>
         public List<Order> Orders
         {
             set { _orders = value; }
             get { return _orders; }
         }
+
+        /// <summary>
+        /// Список скидок
+        /// </summary>
+        public List<IDiscount> Discounts
+        {
+            set { _discounts = value; }
+            get { return _discounts; }
+        }
+
+        public bool IsPriority
+        {
+            set { _isPriority = value; }
+            get { return _isPriority; }
+        }
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -76,7 +110,11 @@ namespace ObjectOrientedPractics.Model
             Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
             Cart = new Cart();
             Orders = new List<Order>();
-            _isPriority = isPriority;
+            IsPriority = isPriority;
+            Discounts = new List<IDiscount>
+            {
+                new PointsDiscount()
+            };
         }
         //Отображение
         public override string ToString()

@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Orders
 {
     public class Order
     {
@@ -22,56 +22,95 @@ namespace ObjectOrientedPractics.Model
         private List<Item> _items;
         // общая стоимость
         private double _cost;
+        // Размер применённой скидки
+        private double _discountAmount;
         //Статус заказа
         private OrderStatus _status;
         //Заказчик
         private Customer _customer;
 
-        // айди
+        /// <summary>
+        /// айди
+        /// </summary>
         public int Id
         {
             get { return _id; }
         }
 
+        /// <summary>
+        /// Дата создания
+        /// </summary>
         public DateTime Date
         {
             get { return _date; }
         }
 
-        // адресс
+        /// <summary>
+        /// адресс
+        /// </summary>
         public Address Address
         {
             set { _address = value; }
             get { return _address; }
         }
 
-        // список товаров
+        /// <summary>
+        /// список товаров
+        /// </summary>
         public List<Item> Items
         {
             set { _items = value; }
             get { return _items; }
         }
 
-        // общая стоимость
+        /// <summary>
+        /// общая стоимость
+        /// </summary>
         public double Cost
         { 
             set { _cost = value; }
             get { return _cost; }
         }
 
-        //Статус заказа
+        /// <summary>
+        /// Размер применённой скидки
+        /// </summary>
+        public double DiscountAmount
+        {
+            set { _discountAmount = value; }
+            get { return _discountAmount; }
+        }
+
+        /// <summary>
+        /// Итоговая стоимость
+        /// </summary>
+        public double Total
+        {
+            get
+            {
+                return Cost - DiscountAmount;
+            }
+        }
+
+        /// <summary>
+        /// Статус заказа
+        /// </summary>
         public OrderStatus Status
         { 
             get { return _status; }
             set { _status = value; }
         }
 
-        //Заказчик
+        /// <summary>
+        /// Заказчик
+        /// </summary>
         public Customer Customer
         {
             set { _customer = value; }
             get { return _customer; }
         }
+
+
 
         /// <summary>
         /// Заказ покупателя
@@ -81,13 +120,14 @@ namespace ObjectOrientedPractics.Model
         /// <param name="items">список товаров</param>
         /// <param name="cost">общая стоимость</param>
         /// <param name="status">статус заказа</param>
-        public Order(Address address, List<Item> items, double cost, OrderStatus status)
+        public Order(Address address, List<Item> items, double cost, double discountAmount, OrderStatus status)
         {
             _id = _count++;
             _date = DateTime.UtcNow;
             Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
             Items = new List<Item>(items);
             Cost = cost;
+            DiscountAmount = discountAmount;
             Status = status;
         }
 
@@ -98,12 +138,13 @@ namespace ObjectOrientedPractics.Model
         /// <param name="cost">общая стоимость</param>
         /// <param name="status">статус заказа</param>
         /// <param name="customer">заказчик</param>
-        public Order(int Id,DateTime date, Address address, double cost, OrderStatus status, Customer customer, List<Item> items)
+        public Order(int Id,DateTime date, Address address, double cost, double discountAmount, OrderStatus status, Customer customer, List<Item> items)
         {
             _id = Id;
             _date = date;
             Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
             Cost = cost;
+            DiscountAmount = discountAmount;
             Status = status;
             Customer = customer;
             Items = new List<Item>(items);

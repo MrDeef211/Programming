@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ObjectOrientedPractics.Model.Orders;
+using ObjectOrientedPractics.Model.Discounts;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -59,11 +61,11 @@ namespace ObjectOrientedPractics.View.Tabs
 
                             if (thisOrder is PriorityOrder priority)
                             {
-                                Orders.Add(new PriorityOrder(thisOrder.Id, thisOrder.Date, thisOrder.Address, thisOrder.Cost, thisOrder.Status, thisCustomer, thisOrder.Items));
+                                Orders.Add(new PriorityOrder(thisOrder.Id, thisOrder.Date, thisOrder.Address, thisOrder.Cost, thisOrder.DiscountAmount, thisOrder.Status, thisCustomer, thisOrder.Items));
                             }
                             else
                             {
-                                Orders.Add(new Order(thisOrder.Id, thisOrder.Date, thisOrder.Address, thisOrder.Cost, thisOrder.Status, thisCustomer, thisOrder.Items));
+                                Orders.Add(new Order(thisOrder.Id, thisOrder.Date, thisOrder.Address, thisOrder.Cost, thisOrder.DiscountAmount, thisOrder.Status, thisCustomer, thisOrder.Items));
                             }
 
                         }

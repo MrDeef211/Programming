@@ -9,14 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Discounts;
 using ObjectOrientedPractics.View.Controls;
+using ObjectOrientedPractics.View.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class CustomersTab : UserControl
     {
         private static List<Customer> _customers = new List<Customer>();
+
+        private List<IDiscount> _deletingDisconts = new List<IDiscount>();
 
         public static List<Customer> Customers
         {
@@ -60,20 +65,51 @@ namespace ObjectOrientedPractics.View.Tabs
                     int index = CustomersListBox.SelectedIndex;
                     //Выбраный обьект
                     Customer selectedCustomer = (Customer)CustomersListBox.SelectedItem;
+
                     //Изменение обьекта
                     selectedCustomer.FullName = FullNameTextBox.Text;
                     selectedCustomer.Address = AddressControl.Address;
+                    selectedCustomer._isPriority = IsPriorityCheckBox.Checked;
+
+                    //Удаление лишних скидок
+                    foreach (var discont in _deletingDisconts)
+                    {
+                        selectedCustomer.Discounts.Remove(discont);
+                    }
+                    _deletingDisconts.Clear();
+
+                    //Добавление новых скидок
+                    for (int i = 0; i < DiscountsListBox.Items.Count; i++)
+                    {
+                        IDiscount discount = (IDiscount)DiscountsListBox.Items[i];
+                        if (!selectedCustomer.Discounts.Contains(discount))
+                        {
+                            selectedCustomer.Discounts.Add(discount);
+                        }
+                    }
+
+                    //ФИКСАЦИЯ ИЗМЕНЕНИЙ!!!!
+                    //НЕ ПЕРЕСТАВЛЯТЬ!!!!
+                    //НЕ ПИСАТЬ ИЗМЕНЕНИЯ ПОСЛЕ ФИКСАЦИИ!!!!
                     CustomersListBox.Items[index] = selectedCustomer;
                     Customers[index] = selectedCustomer;
-                    selectedCustomer._isPriority = IsPriorityCheckBox.Checked;
-                    
+
                 }
                 else
                 {
                     //Добавление нового обьекта
                     Customer newCustomer = new Customer(FullNameTextBox.Text, AddressControl.Address, IsPriorityCheckBox.Checked);
+
+                    //Добавление скидок
+                    for (int i = 0; i < DiscountsListBox.Items.Count; i++)
+                    {
+                        IDiscount discount = (IDiscount)DiscountsListBox.Items[i];
+                        newCustomer.Discounts.Add(discount);
+                    }
+
                     CustomersListBox.Items.Add(newCustomer);
                     Customers.Add(newCustomer);
+
                 }
             }
         }
@@ -110,13 +146,19 @@ namespace ObjectOrientedPractics.View.Tabs
         //Выделение обьекта в CustomersListBox
         private void CustomersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DiscountsListBox.Items.Clear();
+            _deletingDisconts.Clear();
             if (CustomersListBox.SelectedIndex != -1)
             {
                 Customer selectedCustomer = (Customer)CustomersListBox.SelectedItem;
                 IDTextBox.Text = selectedCustomer.Id.ToString();
                 FullNameTextBox.Text = selectedCustomer.FullName;
                 AddressControl.Address = selectedCustomer.Address;
-                IsPriorityCheckBox.Checked = selectedCustomer._isPriority;
+                IsPriorityCheckBox.Checked = selectedCustomer.IsPriority;
+                foreach (IDiscount discount in selectedCustomer.Discounts)
+                {
+                    DiscountsListBox.Items.Add(discount);
+                }
             }
             else
             {
@@ -144,9 +186,34 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private void AddressControl_Load(object sender, EventArgs e)
+        // Добавление скидки
+        private void AddDiscountButton_Click(object sender, EventArgs e)
         {
+            AddDiscountForm newDiscount = new AddDiscountForm();
+            newDiscount.ShowDialog();
+            if (newDiscount.confirm == true)
+            {
+                DiscountsListBox.Items.Add(new PercentDiscount(newDiscount.Category));
 
+            }
         }
+
+        //Удаление скидки
+        private void RemoveDiscountButton_Click(object sender, EventArgs e)
+        {
+            if (DiscountsListBox.SelectedIndex > 0 ) 
+            {
+                if (CustomersListBox.SelectedIndex != -1)
+                {
+                    _deletingDisconts.Add((IDiscount)DiscountsListBox.SelectedItem);
+                }
+                DiscountsListBox.Items.Remove(DiscountsListBox.SelectedItem);
+
+            }
+        }
+
+
+
+
     }
 }
