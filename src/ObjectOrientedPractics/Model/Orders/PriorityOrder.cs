@@ -64,8 +64,8 @@ namespace ObjectOrientedPractics.Model.Orders
         /// <param name="status">Статус заказа</param>
         /// <param name="deliveryDate">Дата доставки</param>
         /// <param name="deliveryTime">Время доставки</param>
-        public PriorityOrder(Address address, List<Item> items, double cost, OrderStatus status/*, DateTime deliveryDate, string deliveryTime*/) 
-            : base(address, items, cost, status)
+        public PriorityOrder(Address address, List<Item> items, double cost, double discountAmount, OrderStatus status/*, DateTime deliveryDate, string deliveryTime*/) 
+            : base(address, items, cost, discountAmount, status)
         {
             //DeliveryDate = deliveryDate;
             //DeliveryTime = deliveryTime;
@@ -78,8 +78,8 @@ namespace ObjectOrientedPractics.Model.Orders
         /// <param name="cost">общая стоимость</param>
         /// <param name="status">статус заказа</param>
         /// <param name="customer">заказчик</param>
-        public PriorityOrder(int Id, DateTime date, Address address, double cost, OrderStatus status, Customer customer, List<Item> items) 
-            : base(Id, date, address, cost, status, customer, items)
+        public PriorityOrder(int Id, DateTime date, Address address, double cost, double discountAmount, OrderStatus status, Customer customer, List<Item> items) 
+            : base(Id, date, address, cost, discountAmount, status, customer, items)
         {
         }
 

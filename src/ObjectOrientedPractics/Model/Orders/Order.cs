@@ -22,6 +22,8 @@ namespace ObjectOrientedPractics.Model.Orders
         private List<Item> _items;
         // общая стоимость
         private double _cost;
+        // Размер применённой скидки
+        private double _discountAmount;
         //Статус заказа
         private OrderStatus _status;
         //Заказчик
@@ -71,6 +73,26 @@ namespace ObjectOrientedPractics.Model.Orders
         }
 
         /// <summary>
+        /// Размер применённой скидки
+        /// </summary>
+        public double DiscountAmount
+        {
+            set { _discountAmount = value; }
+            get { return _discountAmount; }
+        }
+
+        /// <summary>
+        /// Итоговая стоимость
+        /// </summary>
+        public double Total
+        {
+            get
+            {
+                return Cost - DiscountAmount;
+            }
+        }
+
+        /// <summary>
         /// Статус заказа
         /// </summary>
         public OrderStatus Status
@@ -88,22 +110,7 @@ namespace ObjectOrientedPractics.Model.Orders
             get { return _customer; }
         }
 
-        /// <summary>
-        /// Размер применённой скидки
-        /// </summary>
-        public double DiscountAmount
-        {
-            set { DiscountAmount = value; }
-            get { return DiscountAmount; }
-        }
 
-        public double Total
-        {
-            get
-            {
-                return Cost - DiscountAmount;
-            }
-        }
 
         /// <summary>
         /// Заказ покупателя
@@ -113,13 +120,14 @@ namespace ObjectOrientedPractics.Model.Orders
         /// <param name="items">список товаров</param>
         /// <param name="cost">общая стоимость</param>
         /// <param name="status">статус заказа</param>
-        public Order(Address address, List<Item> items, double cost, OrderStatus status)
+        public Order(Address address, List<Item> items, double cost, double discountAmount, OrderStatus status)
         {
             _id = _count++;
             _date = DateTime.UtcNow;
             Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
             Items = new List<Item>(items);
             Cost = cost;
+            DiscountAmount = discountAmount;
             Status = status;
         }
 
@@ -130,12 +138,13 @@ namespace ObjectOrientedPractics.Model.Orders
         /// <param name="cost">общая стоимость</param>
         /// <param name="status">статус заказа</param>
         /// <param name="customer">заказчик</param>
-        public Order(int Id,DateTime date, Address address, double cost, OrderStatus status, Customer customer, List<Item> items)
+        public Order(int Id,DateTime date, Address address, double cost, double discountAmount, OrderStatus status, Customer customer, List<Item> items)
         {
             _id = Id;
             _date = date;
             Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
             Cost = cost;
+            DiscountAmount = discountAmount;
             Status = status;
             Customer = customer;
             Items = new List<Item>(items);

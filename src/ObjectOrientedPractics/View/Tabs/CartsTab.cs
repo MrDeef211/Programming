@@ -20,6 +20,8 @@ namespace ObjectOrientedPractics.View.Tabs
         private static List<Customer> _customers;
         private static List<Item> _items;
 
+        private double _currentDiscont;
+
         public static List<Customer> Customers
         {
             get { return _customers; }
@@ -81,23 +83,68 @@ namespace ObjectOrientedPractics.View.Tabs
             CartListBox.Items.Clear();
             if ( CurrentCustomer != null ) 
             { 
+                //Список покупок
                 foreach( var item in CurrentCustomer.Cart.Items) 
                 { 
                     CartListBox.Items.Add(item);
                 }
                 AmountText.Text = CurrentCustomer.Cart.Amount.ToString();
+
+                UpdateDiscont();
+                
             }
             else
             {
+                DiscountsCheckedListBox.Items.Clear();
                 AmountText.Text = "0";
+                DiscountAmmountText.Text = "0";
+                TotalText.Text = "0";
             }
         }
 
+        //Обновление скидки
+        private void UpdateDiscont()
+        {
+            _currentDiscont = 0;
+            //Подсчёт общей скидки
+            for (int i = 0; i < DiscountsCheckedListBox.Items.Count; i++)
+            {
+                if (DiscountsCheckedListBox.GetItemChecked(i))
+                {
+                    _currentDiscont += CurrentCustomer.Discounts[i].Calculate(CurrentCustomer.Cart.Items);
+                }
+            }
+
+            DiscountAmmountText.Text = _currentDiscont.ToString();
+            TotalText.Text = (CurrentCustomer.Cart.Amount - _currentDiscont).ToString();
+        }
+
+        //Обновление скидок
+        private void UpdateDiscontsList()
+        {
+            //Список скидок
+            DiscountsCheckedListBox.Items.Clear();
+            foreach (var discount in CurrentCustomer.Discounts)
+            {
+                DiscountsCheckedListBox.Items.Add(discount);
+            }
+
+            //Галки рядом со скидками
+            for (int i = 0; i < DiscountsCheckedListBox.Items.Count; i++)
+            {
+                DiscountsCheckedListBox.SetItemChecked(i, true);
+            }
+        }
+
+        //Изменение пользователя
         private void CustomerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ( CustomerComboBox.SelectedIndex != -1 )
             {
                 UpdateCart();
+
+                UpdateDiscontsList();
+
             }
             else
             {
@@ -139,19 +186,35 @@ namespace ObjectOrientedPractics.View.Tabs
         //Создание заказа
         private void CreateButton_Click(object sender, EventArgs e)
         {
+            //Проверка наличия покупок в корзине
             if(CartListBox.Items.Count == 0)
             {
                 return;
             }
-            if(CurrentCustomer._isPriority)
+            //Итоговая цена
+            double discont = 0;
+
+            //Фиксация бонусов и подсчёт скидки
+            for (int i = 0; i < DiscountsCheckedListBox.Items.Count; i++)
             {
-                CurrentCustomer.Orders.Add(new PriorityOrder(CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, OrderStatus.New));
+                if (DiscountsCheckedListBox.GetItemChecked(i))
+                {
+                    discont += CurrentCustomer.Discounts[i].Apply(CurrentCustomer.Cart.Items);
+                }
+                CurrentCustomer.Discounts[i].Update(CurrentCustomer.Cart.Items);
+            }
+
+            //Проверка приоритета покупателя
+            if (CurrentCustomer._isPriority)
+            {
+                CurrentCustomer.Orders.Add(new PriorityOrder(CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, discont, OrderStatus.New));
             }
             else
             {
-                CurrentCustomer.Orders.Add(new Order(CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, OrderStatus.New));
+                CurrentCustomer.Orders.Add(new Order(CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, discont, OrderStatus.New));
             }
             ClearButton_Click(sender, e);
+            UpdateDiscontsList();
         }
 
         //Сброс выделения при нажатии клавиши
@@ -189,6 +252,9 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-
+        private void DiscountsCheckedListBox_Click(object sender, EventArgs e)
+        {
+            UpdateDiscont();
+        }
     }
 }
