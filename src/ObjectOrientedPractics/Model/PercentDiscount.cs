@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractics.Model
 {
-    internal class PercentDiscount
+    internal class PercentDiscount : IDiscount
     {
         //Категория скидки
         private Category _category;
         //Величина скидки
-        private int _discont;
+        private int _discont;   
         //Сумма покупок
         private double _amount;
 
@@ -66,8 +66,7 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
-        /// Принимает на вход список продуктов и возвращает размер скидки, 
-        /// доступной для этого списка продуктов с текущим количеством баллов.
+        /// Принимает на вход список продуктов и возвращает размер скидки
         /// </summary>
         /// <param name="items">Список продуктов</param>
         /// <returns>Размер скидки</returns>

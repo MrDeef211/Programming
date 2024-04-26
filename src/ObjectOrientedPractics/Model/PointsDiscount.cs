@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractics.Model
 {
-    public class PointsDiscount
+    public class PointsDiscount : IDiscount
     {
         //Количество накопленных балов
         private int _points;
