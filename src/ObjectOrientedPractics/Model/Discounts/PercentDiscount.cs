@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Discounts
 {
     internal class PercentDiscount : IDiscount
     {
@@ -120,6 +120,12 @@ namespace ObjectOrientedPractics.Model
             }
 
             Amount += cost;
+        }
+
+        public PercentDiscount(Category category)
+        {
+            Category = category;
+            Amount = 0;
         }
 
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Discounts
 {
     public class PointsDiscount : IDiscount
     {
@@ -91,6 +91,11 @@ namespace ObjectOrientedPractics.Model
             }
 
             Points += (int)newPoints;
+        }
+
+        public PointsDiscount()
+        {
+            Points = 0;
         }
 
     }

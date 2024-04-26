@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Orders
 {
     public class Order
     {
@@ -27,50 +27,82 @@ namespace ObjectOrientedPractics.Model
         //Заказчик
         private Customer _customer;
 
-        // айди
+        /// <summary>
+        /// айди
+        /// </summary>
         public int Id
         {
             get { return _id; }
         }
 
+        /// <summary>
+        /// Дата создания
+        /// </summary>
         public DateTime Date
         {
             get { return _date; }
         }
 
-        // адресс
+        /// <summary>
+        /// адресс
+        /// </summary>
         public Address Address
         {
             set { _address = value; }
             get { return _address; }
         }
 
-        // список товаров
+        /// <summary>
+        /// список товаров
+        /// </summary>
         public List<Item> Items
         {
             set { _items = value; }
             get { return _items; }
         }
 
-        // общая стоимость
+        /// <summary>
+        /// общая стоимость
+        /// </summary>
         public double Cost
         { 
             set { _cost = value; }
             get { return _cost; }
         }
 
-        //Статус заказа
+        /// <summary>
+        /// Статус заказа
+        /// </summary>
         public OrderStatus Status
         { 
             get { return _status; }
             set { _status = value; }
         }
 
-        //Заказчик
+        /// <summary>
+        /// Заказчик
+        /// </summary>
         public Customer Customer
         {
             set { _customer = value; }
             get { return _customer; }
+        }
+
+        /// <summary>
+        /// Размер применённой скидки
+        /// </summary>
+        public double DiscountAmount
+        {
+            set { DiscountAmount = value; }
+            get { return DiscountAmount; }
+        }
+
+        public double Total
+        {
+            get
+            {
+                return Cost - DiscountAmount;
+            }
         }
 
         /// <summary>

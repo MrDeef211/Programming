@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractics.Model
 {
-    internal interface IDiscount
+    public interface IDiscount
     {
         /// <summary>
         /// Информация о скидке
