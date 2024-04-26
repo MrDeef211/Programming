@@ -128,5 +128,11 @@ namespace ObjectOrientedPractics.Model.Discounts
             Amount = 0;
         }
 
+        //Отображение
+        public override string ToString()
+        {
+            return Info; // Возвращаем значение свойства Info
+        }
+
     }
 }

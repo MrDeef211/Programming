@@ -90,6 +90,12 @@ namespace ObjectOrientedPractics.Model
             get { return _discounts; }
         }
 
+        public bool IsPriority
+        {
+            set { _isPriority = value; }
+            get { return _isPriority; }
+        }
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -104,7 +110,7 @@ namespace ObjectOrientedPractics.Model
             Address = new Address(address.Index, address.Country, address.City, address.Street, address.Building, address.Apartment);
             Cart = new Cart();
             Orders = new List<Order>();
-            _isPriority = isPriority;
+            IsPriority = isPriority;
             Discounts = new List<IDiscount>
             {
                 new PointsDiscount()

@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-
-            ObjectOrientedPractics.Model.Address address2 = new ObjectOrientedPractics.Model.Address();
+            ObjectOrientedPractics.Model.Address address1 = new ObjectOrientedPractics.Model.Address();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.OrdersLabel = new System.Windows.Forms.Label();
             this.OrdersGridView = new System.Windows.Forms.DataGridView();
+            this.PriorityPanel = new System.Windows.Forms.Panel();
+            this.PriorityOptionsLabel = new System.Windows.Forms.Label();
+            this.DeliveryTimeComboBox = new System.Windows.Forms.ComboBox();
+            this.DeliveryTimeLabel = new System.Windows.Forms.Label();
             this.StatusComboBox = new System.Windows.Forms.ComboBox();
             this.DataTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
@@ -42,42 +45,34 @@
             this.AmountLabel = new System.Windows.Forms.Label();
             this.ItemsLabel = new System.Windows.Forms.Label();
             this.ItemListBox = new System.Windows.Forms.ListBox();
+            this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.DateLabel = new System.Windows.Forms.Label();
             this.IDLabel = new System.Windows.Forms.Label();
             this.SelectedOrderLabel = new System.Windows.Forms.Label();
-
             this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.storeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.PriorityOptionsLabel = new System.Windows.Forms.Label();
-            this.DeliveryTimeComboBox = new System.Windows.Forms.ComboBox();
-            this.DeliveryTimeLabel = new System.Windows.Forms.Label();
-            this.PriorityPanel = new System.Windows.Forms.Panel();
-            this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
-            this.storeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordersTabBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordersTabBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.itemsTabBindingSource = new System.Windows.Forms.BindingSource(this.components);
-
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).BeginInit();
+            this.PriorityPanel.SuspendLayout();
             this.panel1.SuspendLayout();
-
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource1)).BeginInit();
-            this.PriorityPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersTabBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersTabBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsTabBindingSource)).BeginInit();
-
             this.SuspendLayout();
             // 
             // splitContainer
@@ -139,6 +134,44 @@
             this.OrdersGridView.Size = new System.Drawing.Size(405, 527);
             this.OrdersGridView.TabIndex = 0;
             this.OrdersGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.OrdersGridView_CellMouseClick);
+            // 
+            // PriorityPanel
+            // 
+            this.PriorityPanel.Controls.Add(this.PriorityOptionsLabel);
+            this.PriorityPanel.Controls.Add(this.DeliveryTimeComboBox);
+            this.PriorityPanel.Controls.Add(this.DeliveryTimeLabel);
+            this.PriorityPanel.Location = new System.Drawing.Point(254, 4);
+            this.PriorityPanel.Name = "PriorityPanel";
+            this.PriorityPanel.Size = new System.Drawing.Size(234, 114);
+            this.PriorityPanel.TabIndex = 21;
+            // 
+            // PriorityOptionsLabel
+            // 
+            this.PriorityOptionsLabel.AutoSize = true;
+            this.PriorityOptionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PriorityOptionsLabel.Location = new System.Drawing.Point(3, 0);
+            this.PriorityOptionsLabel.Name = "PriorityOptionsLabel";
+            this.PriorityOptionsLabel.Size = new System.Drawing.Size(113, 16);
+            this.PriorityOptionsLabel.TabIndex = 16;
+            this.PriorityOptionsLabel.Text = "Priority Options";
+            // 
+            // DeliveryTimeComboBox
+            // 
+            this.DeliveryTimeComboBox.FormattingEnabled = true;
+            this.DeliveryTimeComboBox.Location = new System.Drawing.Point(103, 25);
+            this.DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
+            this.DeliveryTimeComboBox.Size = new System.Drawing.Size(123, 24);
+            this.DeliveryTimeComboBox.TabIndex = 17;
+            this.DeliveryTimeComboBox.SelectedIndexChanged += new System.EventHandler(this.DeliveryTimeComboBox_SelectedIndexChanged);
+            // 
+            // DeliveryTimeLabel
+            // 
+            this.DeliveryTimeLabel.AutoSize = true;
+            this.DeliveryTimeLabel.Location = new System.Drawing.Point(3, 28);
+            this.DeliveryTimeLabel.Name = "DeliveryTimeLabel";
+            this.DeliveryTimeLabel.Size = new System.Drawing.Size(94, 16);
+            this.DeliveryTimeLabel.TabIndex = 20;
+            this.DeliveryTimeLabel.Text = "Delivery Time:";
             // 
             // StatusComboBox
             // 
@@ -218,13 +251,13 @@
             // 
             // AddressControl
             // 
-            address2.Apartment = "";
-            address2.Building = "";
-            address2.City = "";
-            address2.Country = "";
-            address2.Index = 111111;
-            address2.Street = "";
-            this.AddressControl.Address = address2;
+            address1.Apartment = "";
+            address1.Building = "";
+            address1.City = "";
+            address1.Country = "";
+            address1.Index = 111111;
+            address1.Street = "";
+            this.AddressControl.Address = address1;
             this.AddressControl.Location = new System.Drawing.Point(15, 117);
             this.AddressControl.Name = "AddressControl";
             this.AddressControl.Size = new System.Drawing.Size(467, 187);
@@ -272,6 +305,10 @@
             this.customersBindingSource.DataMember = "Customers";
             this.customersBindingSource.DataSource = this.storeBindingSource;
             // 
+            // storeBindingSource
+            // 
+            this.storeBindingSource.DataSource = typeof(ObjectOrientedPractics.Model.Store);
+            // 
             // customersBindingSource1
             // 
             this.customersBindingSource1.DataMember = "Customers";
@@ -286,62 +323,6 @@
             // 
             this.ordersBindingSource1.DataMember = "Orders";
             this.ordersBindingSource1.DataSource = this.customersBindingSource1;
-            // 
-            // PriorityOptionsLabel
-            // 
-            this.PriorityOptionsLabel.AutoSize = true;
-            this.PriorityOptionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PriorityOptionsLabel.Location = new System.Drawing.Point(3, 0);
-            this.PriorityOptionsLabel.Name = "PriorityOptionsLabel";
-            this.PriorityOptionsLabel.Size = new System.Drawing.Size(113, 16);
-            this.PriorityOptionsLabel.TabIndex = 16;
-            this.PriorityOptionsLabel.Text = "Priority Options";
-            // 
-            // DeliveryTimeComboBox
-            // 
-            this.DeliveryTimeComboBox.FormattingEnabled = true;
-            this.DeliveryTimeComboBox.Location = new System.Drawing.Point(103, 25);
-            this.DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
-            this.DeliveryTimeComboBox.Size = new System.Drawing.Size(123, 24);
-            this.DeliveryTimeComboBox.TabIndex = 17;
-            this.DeliveryTimeComboBox.SelectedIndexChanged += new System.EventHandler(this.DeliveryTimeComboBox_SelectedIndexChanged);
-            // 
-            // DeliveryTimeLabel
-            // 
-            this.DeliveryTimeLabel.AutoSize = true;
-            this.DeliveryTimeLabel.Location = new System.Drawing.Point(3, 28);
-            this.DeliveryTimeLabel.Name = "DeliveryTimeLabel";
-            this.DeliveryTimeLabel.Size = new System.Drawing.Size(94, 16);
-            this.DeliveryTimeLabel.TabIndex = 20;
-            this.DeliveryTimeLabel.Text = "Delivery Time:";
-            // 
-            // PriorityPanel
-            // 
-            this.PriorityPanel.Controls.Add(this.PriorityOptionsLabel);
-            this.PriorityPanel.Controls.Add(this.DeliveryTimeComboBox);
-            this.PriorityPanel.Controls.Add(this.DeliveryTimeLabel);
-            this.PriorityPanel.Location = new System.Drawing.Point(254, 4);
-            this.PriorityPanel.Name = "PriorityPanel";
-            this.PriorityPanel.Size = new System.Drawing.Size(234, 114);
-            this.PriorityPanel.TabIndex = 21;
-            // 
-            // AddressControl
-            // 
-            address2.Apartment = "";
-            address2.Building = "";
-            address2.City = "";
-            address2.Country = "";
-            address2.Index = 111111;
-            address2.Street = "";
-            this.AddressControl.Address = address2;
-            this.AddressControl.Location = new System.Drawing.Point(15, 117);
-            this.AddressControl.Name = "AddressControl";
-            this.AddressControl.Size = new System.Drawing.Size(467, 187);
-            this.AddressControl.TabIndex = 5;
-            // 
-            // storeBindingSource
-            // 
-            this.storeBindingSource.DataSource = typeof(ObjectOrientedPractics.Model.Store);
             // 
             // ordersTabBindingSource
             // 
@@ -370,15 +351,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).EndInit();
+            this.PriorityPanel.ResumeLayout(false);
+            this.PriorityPanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource1)).EndInit();
-            this.PriorityPanel.ResumeLayout(false);
-            this.PriorityPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersTabBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersTabBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsTabBindingSource)).EndInit();

@@ -32,5 +32,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="items">Список продуктов</param>
         void Update(List<Item> items);
+
+
     }
 }
