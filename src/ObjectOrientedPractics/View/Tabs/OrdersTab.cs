@@ -130,11 +130,13 @@ namespace ObjectOrientedPractics.View.Tabs
                 _selectedPriorityOrder = null;
                 PriorityPanel.Visible = false;
             }
-
+            //Обновление панелей
             IDTextBox.Text = _selectedOrder.Id.ToString();
             DataTextBox.Text = _selectedOrder.Date.ToString();
+            TotalText.Text = _selectedOrder.Total.ToString();
             StatusComboBox.SelectedItem = _selectedOrder.Status;
             AddressControl.Address = _selectedOrder.Address;
+            //Продукты заказа
             ItemListBox.Items.Clear();
             foreach (Item thisitem in _selectedOrder.Items)
             {

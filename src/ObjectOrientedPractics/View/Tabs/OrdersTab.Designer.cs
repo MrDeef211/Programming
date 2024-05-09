@@ -41,8 +41,8 @@
             this.DataTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.AmountText = new System.Windows.Forms.Label();
-            this.AmountLabel = new System.Windows.Forms.Label();
+            this.TotalText = new System.Windows.Forms.Label();
+            this.TotalLabel = new System.Windows.Forms.Label();
             this.ItemsLabel = new System.Windows.Forms.Label();
             this.ItemListBox = new System.Windows.Forms.ListBox();
             this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
@@ -93,7 +93,7 @@
             this.splitContainer.Panel2.Controls.Add(this.DataTextBox);
             this.splitContainer.Panel2.Controls.Add(this.IDTextBox);
             this.splitContainer.Panel2.Controls.Add(this.panel1);
-            this.splitContainer.Panel2.Controls.Add(this.AmountLabel);
+            this.splitContainer.Panel2.Controls.Add(this.TotalLabel);
             this.splitContainer.Panel2.Controls.Add(this.ItemsLabel);
             this.splitContainer.Panel2.Controls.Add(this.ItemListBox);
             this.splitContainer.Panel2.Controls.Add(this.AddressControl);
@@ -202,34 +202,34 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.AmountText);
+            this.panel1.Controls.Add(this.TotalText);
             this.panel1.Location = new System.Drawing.Point(359, 447);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(123, 33);
             this.panel1.TabIndex = 12;
             // 
-            // AmountText
+            // TotalText
             // 
-            this.AmountText.AutoSize = true;
-            this.AmountText.Dock = System.Windows.Forms.DockStyle.Right;
-            this.AmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AmountText.Location = new System.Drawing.Point(99, 0);
-            this.AmountText.Name = "AmountText";
-            this.AmountText.Size = new System.Drawing.Size(24, 25);
-            this.AmountText.TabIndex = 4;
-            this.AmountText.Text = "0";
+            this.TotalText.AutoSize = true;
+            this.TotalText.Dock = System.Windows.Forms.DockStyle.Right;
+            this.TotalText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TotalText.Location = new System.Drawing.Point(99, 0);
+            this.TotalText.Name = "TotalText";
+            this.TotalText.Size = new System.Drawing.Size(24, 25);
+            this.TotalText.TabIndex = 4;
+            this.TotalText.Text = "0";
             // 
-            // AmountLabel
+            // TotalLabel
             // 
-            this.AmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TotalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AmountLabel.AutoSize = true;
-            this.AmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AmountLabel.Location = new System.Drawing.Point(420, 428);
-            this.AmountLabel.Name = "AmountLabel";
-            this.AmountLabel.Size = new System.Drawing.Size(62, 16);
-            this.AmountLabel.TabIndex = 8;
-            this.AmountLabel.Text = "Amount:";
+            this.TotalLabel.AutoSize = true;
+            this.TotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TotalLabel.Location = new System.Drawing.Point(420, 428);
+            this.TotalLabel.Name = "TotalLabel";
+            this.TotalLabel.Size = new System.Drawing.Size(47, 16);
+            this.TotalLabel.TabIndex = 8;
+            this.TotalLabel.Text = "Total:";
             // 
             // ItemsLabel
             // 
@@ -379,9 +379,9 @@
         private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.Label IDLabel;
         private System.Windows.Forms.Label SelectedOrderLabel;
-        private System.Windows.Forms.Label AmountLabel;
+        private System.Windows.Forms.Label TotalLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label AmountText;
+        private System.Windows.Forms.Label TotalText;
         private System.Windows.Forms.ComboBox StatusComboBox;
         private System.Windows.Forms.TextBox DataTextBox;
         private System.Windows.Forms.TextBox IDTextBox;
