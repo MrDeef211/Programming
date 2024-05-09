@@ -33,6 +33,14 @@ namespace ObjectOrientedPractics.Model
         /// <param name="items">Список продуктов</param>
         void Update(List<Item> items);
 
+        /// <summary>
+        /// Сравнивает с другим объектом
+        /// </summary>
+        /// <param name="other">Объект скидки</param>
+        /// <returns>Знак сравнения</returns>
+        int CompareTo(object other);
 
-    }
+
+
+	}
 }

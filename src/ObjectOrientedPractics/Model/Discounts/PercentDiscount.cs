@@ -128,8 +128,21 @@ namespace ObjectOrientedPractics.Model.Discounts
             Amount = 0;
         }
 
-        //Отображение
-        public override string ToString()
+		// Реализация IComparable <>
+		public int CompareTo(object other)
+		{
+			if (other == null) return 1;
+
+			PercentDiscount otherDiscount = (PercentDiscount)other;
+
+			if (otherDiscount != null)
+				return this.Discont.CompareTo(otherDiscount.Discont);
+			else
+				throw new ArgumentException("Object is not a Discount");
+		}
+
+		//Отображение
+		public override string ToString()
         {
             return Info; // Возвращаем значение свойства Info
         }

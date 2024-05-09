@@ -157,8 +157,27 @@ namespace ObjectOrientedPractics.Model.Orders
             Items = new List<Item>();
         }
 
+		// Реализация IEquatable<>
+		public override bool Equals(object other)
+		{
+			// Обязательные проверки прежде чем мы сравним поля
+			if (other == null)
+				return false;
 
-    }
+			if (!(other is Order))
+				return false;
+
+			if (object.ReferenceEquals(this, other))
+				return true;
+
+			var person2 = (Order)other;
+
+			// Только теперь мы можем сделать собственное сравнение
+			return (this.Address == person2.Address && this.Items == person2.Items);
+		}
+
+
+	}
 
     // Статус заказа
     public enum OrderStatus

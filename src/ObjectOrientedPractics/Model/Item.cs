@@ -11,7 +11,7 @@ namespace ObjectOrientedPractics.Model
     /// Товар
     /// </summary>
     [Serializable]
-    public class Item
+    public class Item : ICloneable
     {
         //генератор айди
         private static int _count = 0;
@@ -88,8 +88,46 @@ namespace ObjectOrientedPractics.Model
             Category = category;
         }
 
-        //Отображение
-        public override string ToString()
+		// Реализация ICloneable вместо конструктора копирования
+		public object Clone()
+		{
+			return new Item(this.Name, this.Info, this.Cost, this.Category);
+		}
+
+		// Реализация IEquatable<>
+		public override bool Equals(object other)
+		{
+			// Обязательные проверки прежде чем мы сравним поля
+			if (other == null)
+				return false;
+
+			if (!(other is Item))
+				return false;
+
+			if (object.ReferenceEquals(this, other))
+				return true;
+
+			var person2 = (Item)other;
+
+			// Только теперь мы можем сделать собственное сравнение
+			return (this.Name == person2.Name);
+		}
+
+		// Реализация IComparable <>
+		public int CompareTo(object other)
+		{
+			if (other == null) return 1;
+
+			Item otherItem = (Item)other;
+
+			if (otherItem != null)
+				return this.Cost.CompareTo(otherItem.Cost);
+			else
+				throw new ArgumentException("Object is not a Item");
+		}
+
+		//Отображение
+		public override string ToString()
         {
             return Name; // Возвращаем значение свойства Name
         }
