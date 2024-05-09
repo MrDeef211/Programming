@@ -379,9 +379,9 @@
         private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.Label IDLabel;
         private System.Windows.Forms.Label SelectedOrderLabel;
-        private System.Windows.Forms.Label AmountLabel;
+        private System.Windows.Forms.Label TotalLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label AmountText;
+        private System.Windows.Forms.Label TotalText;
         private System.Windows.Forms.ComboBox StatusComboBox;
         private System.Windows.Forms.TextBox DataTextBox;
         private System.Windows.Forms.TextBox IDTextBox;
