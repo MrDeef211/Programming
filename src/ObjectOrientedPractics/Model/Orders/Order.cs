@@ -172,8 +172,26 @@ namespace ObjectOrientedPractics.Model.Orders
 
 			var person2 = (Order)other;
 
-			// Только теперь мы можем сделать собственное сравнение
-			return (this.Address == person2.Address && this.Items == person2.Items);
+            bool someItems = false;
+
+            if (this.Items.Count == person2.Items.Count)
+            {
+				for (int i = 0; i < this.Items.Count; i++)
+				{
+                    if (this.Items[i].Equals(person2.Items[i]))
+                    {
+                        someItems = true;
+                    }
+                    else
+                    {
+                        someItems = false;
+                        break;
+                    }
+				}
+			}
+
+            // Только теперь мы можем сделать собственное сравнение
+            return (this.Address.Equals(person2.Address) && someItems);
 		}
 
 

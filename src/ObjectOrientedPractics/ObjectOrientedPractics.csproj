@@ -107,6 +107,12 @@
     <Compile Include="View\Tabs\PriorityOrdersTab.Designer.cs">
       <DependentUpon>PriorityOrdersTab.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Tabs\Test_6.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Tabs\Test_6.Designer.cs">
+      <DependentUpon>Test_6.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Tabs\PriorityOrdersTab.resx">
       <DependentUpon>PriorityOrdersTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Tabs\Test_6.resx">
+      <DependentUpon>Test_6.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\ObjectOrientedPractics.Model.Store.datasource" />
     <None Include="Properties\DataSources\ObjectOrientedPractics.View.Tabs.ItemsTab.datasource" />

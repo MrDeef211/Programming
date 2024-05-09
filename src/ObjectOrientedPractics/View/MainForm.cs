@@ -57,5 +57,11 @@ namespace ObjectOrientedPractics.View
         {
             _store.Customers = CartsTab.Customers;
         }
-    }
+
+		private void tabPage4_Enter(object sender, EventArgs e)
+		{
+			Test_6.Items = _store.Items;
+			Test_6.Customers = _store.Customers;
+		}
+	}
 }
