@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Servises;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ObjectOrientedPractics.View.Tabs
@@ -17,36 +18,53 @@ namespace ObjectOrientedPractics.View.Tabs
         
         private static List<Item> _items = new List<Item>();
 
-        public static List<Item> Items
+        private List<Item> _displayedItems;
+
+
+		public static List<Item> Items
         {
             get { return _items; }
             set { _items = value; }
         }
 
-        public void UppdateListBox(List<Item> newItems)
-        {
-            ItemsListBox.Items.Clear();
-            ItemsListBox.SelectedIndex = -1;
-            ClearInputs();
-            if (newItems != null)
-            {
-                for (int i = 0; i < newItems.Count; i++)
-                {
-                    ItemsListBox.Items.Add(newItems[i].Name);
-                }
-            }
-        }
-
-        public ItemsTab()
+		public ItemsTab()
         {
             InitializeComponent();
             // Инициализация Комбобокса категорий
             CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
+            _displayedItems = Items;
         }
 
-        //Нажатие на кнопку добавление
-        //Добавляет обьект в список
-        private void AddButton_Click(object sender, EventArgs e)
+
+		///////////////////////////////////////////////////////////// Сервисные методы
+		public void UppdateListBox(List<Item> newItems)
+		{
+			ItemsListBox.Items.Clear();
+			ItemsListBox.SelectedIndex = -1;
+			ClearInputs();
+			if (newItems != null)
+			{
+				for (int i = 0; i < newItems.Count; i++)
+				{
+					ItemsListBox.Items.Add(newItems[i].Name);
+				}
+			}
+		}
+
+		//Обновление экрана
+		private void ClearInputs()
+		{
+			IDTextBox.Text = "";
+			NameTextBox.Text = "";
+			DescriptionTextBox.Text = "";
+			CostTextBox.Text = "";
+		}
+
+		///////////////////////////////////////////////////////////// Работа с ItemListBox
+
+		//Нажатие на кнопку добавление
+		//Добавляет обьект в список
+		private void AddButton_Click(object sender, EventArgs e)
         {
             //Проверка пройденной валидации
             if (NameTextBox.BackColor != Color.Red && DescriptionTextBox.BackColor != Color.Red && CostTextBox.BackColor != Color.Red)
@@ -59,30 +77,64 @@ namespace ObjectOrientedPractics.View.Tabs
                 //Что выделенно
                 if (ItemsListBox.SelectedIndex != -1)
                 {
-                    //Выбранный обьект
-                    Item selectedItem = (Item)ItemsListBox.SelectedItem;
+                    //Выбранный обьект                     
                     int index = ItemsListBox.SelectedIndex;
-                    //Изменение выбранного обьекта
-                    selectedItem.Cost = bufferCost;
+					Item selectedItem = _displayedItems[index];
+					//Изменение выбранного обьекта
+					selectedItem.Cost = bufferCost;
                     selectedItem.Name = NameTextBox.Text;
                     selectedItem.Info = DescriptionTextBox.Text;
                     selectedItem.Category = (Category)CategoryComboBox.SelectedItem;
-                    ItemsListBox.Items[index] = selectedItem;
-                    Items[index] = selectedItem;
+
 
                 }
                 else
                 {
                     //Создание нового обьекта
                     Item newItem = new Item(NameTextBox.Text, DescriptionTextBox.Text, bufferCost, (Category)CategoryComboBox.SelectedItem);
-                    ItemsListBox.Items.Add(newItem);
                     Items.Add(newItem);
                 }
-            }
+
+				//Фильтр + Сортировка + Обновление
+				FindTextBox_TextChanged(sender, e);
+
+			}
         }
 
-        //Редактирование поля имени + валидация
-        private void NameTextBox_Change(object sender, EventArgs e)
+		//Нажатие кнопки удаления
+		//Удаляет выделенный обьект
+		private void RemoveButton_Click(object sender, EventArgs e)
+		{
+			int index = ItemsListBox.SelectedIndex;
+            Item SelectedItem = _displayedItems[index];
+			if (index != -1)
+			{
+				Items.Remove(SelectedItem);
+
+				//Фильтр + Сортировка + Обновление
+				FindTextBox_TextChanged(sender, e);
+			}
+		}
+
+		//Выбор обьекта
+		private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (ItemsListBox.SelectedIndex != -1)
+			{
+				Item selectedItem = _displayedItems[ItemsListBox.SelectedIndex];
+				//Заполнение полей
+				IDTextBox.Text = selectedItem.Id.ToString();
+				NameTextBox.Text = selectedItem.Name;
+				DescriptionTextBox.Text = selectedItem.Info;
+				CostTextBox.Text = selectedItem.Cost.ToString();
+				CategoryComboBox.SelectedIndex = (int)selectedItem.Category;
+			}
+		}
+
+		///////////////////////////////////////////////////////////// Редактирование полей
+
+		//Редактирование поля имени + валидация
+		private void NameTextBox_Change(object sender, EventArgs e)
         {
             if (NameTextBox.Text.Length  <= 200)
             {
@@ -132,45 +184,112 @@ namespace ObjectOrientedPractics.View.Tabs
 
         }
 
-        //Обновление экрана
-        private void ClearInputs()
-        {
-            IDTextBox.Text = "";
-            NameTextBox.Text = "";
-            DescriptionTextBox.Text = "";
-            CostTextBox.Text = "";
-        }
+		///////////////////////////////////////////////////////////// Фильтрация и сортировка
 
-        //Выбор обьекта
-        private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
+		//Фильтер по имени
+		private bool NameFilter(Item item)
         {
-            if (ItemsListBox.SelectedIndex != -1)
+            if (FindTextBox.Text == null || FindTextBox.Text == "" || item.Name.Contains(FindTextBox.Text))
             {
-                Item selectedItem = (Item)ItemsListBox.SelectedItem;
-                //Заполнение полей
-                IDTextBox.Text = selectedItem.Id.ToString();
-                NameTextBox.Text = selectedItem.Name;
-                DescriptionTextBox.Text = selectedItem.Info;
-                CostTextBox.Text = selectedItem.Cost.ToString();
-                CategoryComboBox.SelectedIndex = (int)selectedItem.Category;
+                return true;
             }
+            else return false;
         }
 
-        //Нажатие кнопки удаления
-        //Удаляет выделенный обьект
-        private void RemoveButton_Click(object sender, EventArgs e)
-        {
-            int index = ItemsListBox.SelectedIndex;
-            if (index != -1)
+        //Работа поисковой строки
+		private void FindTextBox_TextChanged(object sender, EventArgs e)
+		{
+            if (FindTextBox.Text != null && FindTextBox.Text != "")
             {
-                ItemsListBox.Items.RemoveAt(index);
-                Items.RemoveAt(index);
-                ClearInputs();
+                //Фильтрация по имени
+                _displayedItems = DataTools.Filter(Items, NameFilter);
             }
-        }
+            else
+            {
+                _displayedItems = Items;                
+            }
 
-        //Сброс выделения при нажатии клавиши в окне ItemsListBox
-        private void ItemsListBox_KeyPress(object sender, KeyPressEventArgs e)
+            //Сортировка итогого списка
+			SortComboBox_SelectedIndexChanged(sender, e);			
+		}
+
+        //Сортировка по ID
+        private bool IDSort(Item item1, Item item2)
+        {
+			if (item1.Id > item2.Id)
+				return true;
+			else return false;
+		}
+
+        //Сортировка по имени
+        private bool NameSort(Item item1, Item item2)
+        {
+            int length;
+
+            //Выбор длины по самому короткому
+            if (item1.Name.Length > item2.Name.Length)
+                length = item2.Name.Length;
+            else length = item1.Name.Length;
+
+            //Сравнение строк
+            for (int i = 0; i < length; i++) 
+            { 
+                if (item1.Name[i] > item2.Name[i]) { return true; }
+				if (item1.Name[i] < item2.Name[i]) { return false; }
+			}
+
+            //Одна строка подстрока другой
+            if (item1.Name.Length > item2.Name.Length)
+                return true;
+            else return false;
+
+		}
+
+		//Сортировка по цене по возрастанию
+		private bool CostAscendingSort(Item item1, Item item2)
+		{
+			if (item1.Cost > item2.Cost)
+				return true;
+			else return false;
+		}
+
+		//Сортировка по цене по убыванию
+		private bool CostDescendingSort(Item item1, Item item2)
+		{
+			if (item1.Cost >= item2.Cost)
+				return false;
+			else return true;
+		}
+
+		//Сортировка
+		private void SortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+			switch (SortComboBox.SelectedIndex) 
+            { 
+                case 0:
+                    _displayedItems = DataTools.Sort(_displayedItems, IDSort);
+                    break;
+                case 1:
+					_displayedItems = DataTools.Sort(_displayedItems, NameSort);
+					break;
+				case 2:
+					_displayedItems = DataTools.Sort(_displayedItems, CostAscendingSort);
+					break;
+				case 3:
+					_displayedItems = DataTools.Sort(_displayedItems, CostDescendingSort);
+					break;
+
+			}
+
+			UppdateListBox(_displayedItems);
+		}
+
+
+		///////////////////////////////////////////////////////////// Сброс выделения
+
+		//Сброс выделения при нажатии клавиши в окне ItemsListBox
+		private void ItemsListBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ItemsListBox.SelectedIndex = -1;
             ClearInputs();
@@ -185,5 +304,5 @@ namespace ObjectOrientedPractics.View.Tabs
                 ClearInputs();
             }
         }
-    }
+	}
 }
