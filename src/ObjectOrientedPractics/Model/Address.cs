@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.Model
 {
-    public class Address
+    public class Address : ICloneable
     {
         //почтовый индекс, целое шестизначное число.
         private int _index;
@@ -107,8 +107,35 @@ namespace ObjectOrientedPractics.Model
             Apartment = apartment;
         }
 
-        //Отображение
-        public override string ToString()
+		// Реализация ICloneable вместо конструктора копирования
+		public object Clone()
+		{
+			return new Address(this.Index, this.Country, this.City, this.Street, this.Building, this.Apartment);
+		}
+
+		// Реализация IEquatable<>
+		public override bool Equals(object other)
+		{
+			// Обязательные проверки прежде чем мы сравним поля
+			if (other == null)
+				return false;
+
+			if (!(other is Address))
+				return false;
+
+			if (object.ReferenceEquals(this, other))
+				return true;
+
+			var person2 = (Address)other;
+
+			// Только теперь мы можем сделать собственное сравнение
+			return (this.Index == person2.Index && this.Country == person2.Country && 
+                    this.City == person2.City && this.Street == person2.Street && 
+                    this.Building == person2.Building && this.Apartment == person2.Apartment);
+		}
+
+		//Отображение
+		public override string ToString()
         {
             return (City + " " + Street + " " + Building + " " + Apartment); // Возвращаем значение свойства Fullname
         }

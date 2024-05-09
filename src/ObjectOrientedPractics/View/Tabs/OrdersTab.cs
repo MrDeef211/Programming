@@ -34,7 +34,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 foreach (Customer thisCustomer in value) 
                 { 
                     // наличие заказов
-                    if (thisCustomer.Orders != null) 
+                    if (thisCustomer.Orders != null && thisCustomer.Orders.Count != 0) 
                     {
                         //Перенос заказов
                         foreach (var thisOrder in thisCustomer.Orders)

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractics.Model
 {
-    public class Cart
-    {
+    public class Cart : ICloneable
+	{
         //Список товаров
         private List<Item> _items;
 
@@ -45,5 +45,25 @@ namespace ObjectOrientedPractics.Model
         {
             Items = new List<Item>();
         }
-    }
+
+        private Cart(List<Item> items) 
+        { 
+            Items = new List<Item>();
+            if (items != null) 
+            { 
+                foreach(var item in items)
+                {
+                    Items.Add(item);
+                }
+            }
+		}
+
+        
+
+		// Реализация ICloneable вместо конструктора копирования
+		public object Clone()
+		{
+			return new Cart(this.Items);
+		}
+	}
 }
