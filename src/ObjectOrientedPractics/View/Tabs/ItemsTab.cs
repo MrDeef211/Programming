@@ -15,7 +15,9 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
-        
+        //Изменение предметов
+        public static event EventHandler<EventArgs> ItemsChanged;
+
         private static List<Item> _items = new List<Item>();
 
         private List<Item> _displayedItems;
@@ -60,6 +62,7 @@ namespace ObjectOrientedPractics.View.Tabs
 			CostTextBox.Text = "";
 		}
 
+
 		///////////////////////////////////////////////////////////// Работа с ItemListBox
 
 		//Нажатие на кнопку добавление
@@ -98,6 +101,8 @@ namespace ObjectOrientedPractics.View.Tabs
 				//Фильтр + Сортировка + Обновление
 				FindTextBox_TextChanged(sender, e);
 
+                //Обновление
+                ItemsChanged?.Invoke(this, EventArgs.Empty);
 			}
         }
 
@@ -114,7 +119,10 @@ namespace ObjectOrientedPractics.View.Tabs
 				//Фильтр + Сортировка + Обновление
 				FindTextBox_TextChanged(sender, e);
 			}
-		}
+
+            //Обновление
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
+        }
 
 		//Выбор обьекта
 		private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
