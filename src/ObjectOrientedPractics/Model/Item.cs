@@ -13,6 +13,10 @@ namespace ObjectOrientedPractics.Model
     [Serializable]
     public class Item : ICloneable
     {
+        public event EventHandler<EventArgs> NameChanged;
+        public event EventHandler<EventArgs> CostChanged;
+        public event EventHandler<EventArgs> InfoChanged;
+
         //генератор айди
         private static int _count = 0;
         //айди
@@ -30,16 +34,25 @@ namespace ObjectOrientedPractics.Model
         //имя товара
         public string Name
         {
-            set { _name = ValueValidator.AssertStringOnLength(value, 200, "name"); }
+            set 
+            {
+                _name = ValueValidator.AssertStringOnLength(value, 200, "name"); 
+                NameChanged?.Invoke(this, EventArgs.Empty);
+            }
             get { return _name; }
         }
+
         //описание
         public string Info
         {
-            set { _info = ValueValidator.AssertStringOnLength(value, 1000, "info"); }
+            set 
+            { 
+                _info = ValueValidator.AssertStringOnLength(value, 1000, "info"); 
+                InfoChanged?.Invoke(this, EventArgs.Empty);
+            }
             get { return _info; }
         }
-        //стоимость
+        //стоимость 
         public double Cost
         {
             set
@@ -47,6 +60,7 @@ namespace ObjectOrientedPractics.Model
                 if (value >= 0 && value <= 100000)
                 {
                     _cost = value;
+                    CostChanged?.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {

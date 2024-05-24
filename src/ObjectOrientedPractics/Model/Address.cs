@@ -12,6 +12,8 @@ namespace ObjectOrientedPractics.Model
 {
     public class Address : ICloneable
     {
+        public event EventHandler<EventArgs> AddressChanged;
+
         //почтовый индекс, целое шестизначное число.
         private int _index;
         //страна/регион, строка, не более 50 символов.
@@ -33,6 +35,7 @@ namespace ObjectOrientedPractics.Model
                 if (value > 99999 & value <= 999999)
                 {
                     _index = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {
@@ -46,35 +49,55 @@ namespace ObjectOrientedPractics.Model
         //страна/регион, строка, не более 50 символов.
         public string Country
         {
-            set { _country = ValueValidator.AssertStringOnLength(value, 50, "country"); }
+            set 
+            { 
+                _country = ValueValidator.AssertStringOnLength(value, 50, "country");
+                AddressChanged?.Invoke(this, EventArgs.Empty);
+            }
             get { return _country; }
         }
 
         //город (населенный пункт), строка, не более 50 символов.
         public string City
         {
-            set { _city = ValueValidator.AssertStringOnLength(value, 50, "city"); }
+            set 
+            { 
+                _city = ValueValidator.AssertStringOnLength(value, 50, "city");
+                AddressChanged?.Invoke(this, EventArgs.Empty);
+            }
             get { return _city; }
         }
 
         //улица, строка, не более 100 символов.
         public string Street
         {
-            set { _street = ValueValidator.AssertStringOnLength(value, 100, "street"); }
+            set
+            { 
+                _street = ValueValidator.AssertStringOnLength(value, 100, "street");
+                AddressChanged?.Invoke(this, EventArgs.Empty);
+            }
             get { return _street; }
         }
 
         //номер дома, строка, не более 10 символов.
         public string Building
         {
-            set { _building = ValueValidator.AssertStringOnLength(value, 10, "building"); }
+            set 
+            { 
+                _building = ValueValidator.AssertStringOnLength(value, 10, "building");
+                AddressChanged?.Invoke(this, EventArgs.Empty);
+            }
             get { return _building; }
         }
 
         //номер квартиры/помещения, не более 10 символов
         public string Apartment
         {
-            set { _apartment = ValueValidator.AssertStringOnLength(value, 10, "apartment"); }
+            set 
+            { 
+                _apartment = ValueValidator.AssertStringOnLength(value, 10, "apartment");
+                AddressChanged?.Invoke(this, EventArgs.Empty);
+            }
             get { return _apartment; }
         }
 

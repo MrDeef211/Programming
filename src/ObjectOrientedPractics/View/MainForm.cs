@@ -26,7 +26,17 @@ namespace ObjectOrientedPractics.View
             CartsTab.Items = _store.Items;
             OrdersTab.Customers = _store.Customers;
 
+            ItemsTab.ItemsChanged += ItemsTab_ItemsChanged;
 
+        }
+
+        //Обновление предметов в других окнах
+        private void ItemsTab_ItemsChanged(object sender, EventArgs e)
+        {
+            _store.Items = ItemsTab.Items;
+
+            CartsTab.Items = _store.Items;
+            cartsTab1.UpdatePage();
 
         }
 
@@ -35,11 +45,6 @@ namespace ObjectOrientedPractics.View
             CartsTab.Items = _store.Items;
             CartsTab.Customers = _store.Customers;
             cartsTab1.UpdatePage();
-        }
-
-        private void tabPage1_Leave(object sender, EventArgs e)
-        {
-            _store.Items = ItemsTab.Items;
         }
 
         private void tabPage2_Leave(object sender, EventArgs e)
@@ -58,10 +63,5 @@ namespace ObjectOrientedPractics.View
             _store.Customers = CartsTab.Customers;
         }
 
-		private void tabPage4_Enter(object sender, EventArgs e)
-		{
-			Test_6.Items = _store.Items;
-			Test_6.Customers = _store.Customers;
-		}
 	}
 }
