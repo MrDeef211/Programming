@@ -118,10 +118,12 @@ namespace ObjectOrientedPractics.View.Tabs
 
 				//Фильтр + Сортировка + Обновление
 				FindTextBox_TextChanged(sender, e);
-			}
 
-            //Обновление
-            ItemsChanged?.Invoke(this, EventArgs.Empty);
+                //Обновление
+                ItemsChanged?.Invoke(this, EventArgs.Empty);
+            }
+
+
         }
 
 		//Выбор обьекта

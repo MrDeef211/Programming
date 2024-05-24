@@ -124,83 +124,83 @@
             this.OrdersGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.OrdersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.OrdersGridView.Location = new System.Drawing.Point(6, 23);
-			this.OrdersGridView.MultiSelect = false;
-			this.OrdersGridView.Name = "OrdersGridView";
-			this.OrdersGridView.ReadOnly = true;
-			this.OrdersGridView.RowHeadersWidth = 51;
-			this.OrdersGridView.RowTemplate.Height = 24;
-			this.OrdersGridView.Size = new System.Drawing.Size(405, 527);
-			this.OrdersGridView.TabIndex = 0;
-			this.OrdersGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.OrdersGridView_CellMouseClick);
-			// 
-			// PriorityPanel
-			// 
-			this.PriorityPanel.Controls.Add(this.PriorityOptionsLabel);
-			this.PriorityPanel.Controls.Add(this.DeliveryTimeComboBox);
-			this.PriorityPanel.Controls.Add(this.DeliveryTimeLabel);
-			this.PriorityPanel.Location = new System.Drawing.Point(254, 4);
-			this.PriorityPanel.Name = "PriorityPanel";
-			this.PriorityPanel.Size = new System.Drawing.Size(234, 114);
-			this.PriorityPanel.TabIndex = 21;
-			// 
-			// PriorityOptionsLabel
-			// 
-			this.PriorityOptionsLabel.AutoSize = true;
-			this.PriorityOptionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.PriorityOptionsLabel.Location = new System.Drawing.Point(3, 0);
-			this.PriorityOptionsLabel.Name = "PriorityOptionsLabel";
-			this.PriorityOptionsLabel.Size = new System.Drawing.Size(113, 16);
-			this.PriorityOptionsLabel.TabIndex = 16;
-			this.PriorityOptionsLabel.Text = "Priority Options";
-			// 
-			// DeliveryTimeComboBox
-			// 
-			this.DeliveryTimeComboBox.FormattingEnabled = true;
-			this.DeliveryTimeComboBox.Location = new System.Drawing.Point(103, 25);
-			this.DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
-			this.DeliveryTimeComboBox.Size = new System.Drawing.Size(123, 24);
-			this.DeliveryTimeComboBox.TabIndex = 17;
-			this.DeliveryTimeComboBox.SelectedIndexChanged += new System.EventHandler(this.DeliveryTimeComboBox_SelectedIndexChanged);
-			// 
-			// DeliveryTimeLabel
-			// 
-			this.DeliveryTimeLabel.AutoSize = true;
-			this.DeliveryTimeLabel.Location = new System.Drawing.Point(3, 28);
-			this.DeliveryTimeLabel.Name = "DeliveryTimeLabel";
-			this.DeliveryTimeLabel.Size = new System.Drawing.Size(94, 16);
-			this.DeliveryTimeLabel.TabIndex = 20;
-			this.DeliveryTimeLabel.Text = "Delivery Time:";
-			// 
-			// StatusComboBox
-			// 
-			this.StatusComboBox.FormattingEnabled = true;
-			this.StatusComboBox.Location = new System.Drawing.Point(76, 85);
-			this.StatusComboBox.Name = "StatusComboBox";
-			this.StatusComboBox.Size = new System.Drawing.Size(172, 24);
-			this.StatusComboBox.TabIndex = 15;
-			this.StatusComboBox.SelectedIndexChanged += new System.EventHandler(this.StatusComboBox_SelectedIndexChanged);
-			// 
-			// DataTextBox
-			// 
-			this.DataTextBox.Location = new System.Drawing.Point(76, 56);
-			this.DataTextBox.Name = "DataTextBox";
-			this.DataTextBox.ReadOnly = true;
-			this.DataTextBox.Size = new System.Drawing.Size(172, 22);
-			this.DataTextBox.TabIndex = 14;
-			// 
-			// IDTextBox
-			// 
-			this.IDTextBox.Location = new System.Drawing.Point(76, 29);
-			this.IDTextBox.Name = "IDTextBox";
-			this.IDTextBox.ReadOnly = true;
-			this.IDTextBox.Size = new System.Drawing.Size(172, 22);
-			this.IDTextBox.TabIndex = 13;
-			// 
-			// panel1
-			// 
-			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.OrdersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OrdersGridView.Location = new System.Drawing.Point(6, 23);
+            this.OrdersGridView.MultiSelect = false;
+            this.OrdersGridView.Name = "OrdersGridView";
+            this.OrdersGridView.ReadOnly = true;
+            this.OrdersGridView.RowHeadersWidth = 51;
+            this.OrdersGridView.RowTemplate.Height = 24;
+            this.OrdersGridView.Size = new System.Drawing.Size(405, 527);
+            this.OrdersGridView.TabIndex = 0;
+            this.OrdersGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.OrdersGridView_CellMouseClick);
+            // 
+            // PriorityPanel
+            // 
+            this.PriorityPanel.Controls.Add(this.PriorityOptionsLabel);
+            this.PriorityPanel.Controls.Add(this.DeliveryTimeComboBox);
+            this.PriorityPanel.Controls.Add(this.DeliveryTimeLabel);
+            this.PriorityPanel.Location = new System.Drawing.Point(254, 4);
+            this.PriorityPanel.Name = "PriorityPanel";
+            this.PriorityPanel.Size = new System.Drawing.Size(234, 114);
+            this.PriorityPanel.TabIndex = 21;
+            // 
+            // PriorityOptionsLabel
+            // 
+            this.PriorityOptionsLabel.AutoSize = true;
+            this.PriorityOptionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PriorityOptionsLabel.Location = new System.Drawing.Point(3, 0);
+            this.PriorityOptionsLabel.Name = "PriorityOptionsLabel";
+            this.PriorityOptionsLabel.Size = new System.Drawing.Size(113, 16);
+            this.PriorityOptionsLabel.TabIndex = 16;
+            this.PriorityOptionsLabel.Text = "Priority Options";
+            // 
+            // DeliveryTimeComboBox
+            // 
+            this.DeliveryTimeComboBox.FormattingEnabled = true;
+            this.DeliveryTimeComboBox.Location = new System.Drawing.Point(103, 25);
+            this.DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
+            this.DeliveryTimeComboBox.Size = new System.Drawing.Size(123, 24);
+            this.DeliveryTimeComboBox.TabIndex = 17;
+            this.DeliveryTimeComboBox.SelectedIndexChanged += new System.EventHandler(this.DeliveryTimeComboBox_SelectedIndexChanged);
+            // 
+            // DeliveryTimeLabel
+            // 
+            this.DeliveryTimeLabel.AutoSize = true;
+            this.DeliveryTimeLabel.Location = new System.Drawing.Point(3, 28);
+            this.DeliveryTimeLabel.Name = "DeliveryTimeLabel";
+            this.DeliveryTimeLabel.Size = new System.Drawing.Size(94, 16);
+            this.DeliveryTimeLabel.TabIndex = 20;
+            this.DeliveryTimeLabel.Text = "Delivery Time:";
+            // 
+            // StatusComboBox
+            // 
+            this.StatusComboBox.FormattingEnabled = true;
+            this.StatusComboBox.Location = new System.Drawing.Point(76, 85);
+            this.StatusComboBox.Name = "StatusComboBox";
+            this.StatusComboBox.Size = new System.Drawing.Size(172, 24);
+            this.StatusComboBox.TabIndex = 15;
+            this.StatusComboBox.SelectedIndexChanged += new System.EventHandler(this.StatusComboBox_SelectedIndexChanged);
+            // 
+            // DataTextBox
+            // 
+            this.DataTextBox.Location = new System.Drawing.Point(76, 56);
+            this.DataTextBox.Name = "DataTextBox";
+            this.DataTextBox.ReadOnly = true;
+            this.DataTextBox.Size = new System.Drawing.Size(172, 22);
+            this.DataTextBox.TabIndex = 14;
+            // 
+            // IDTextBox
+            // 
+            this.IDTextBox.Location = new System.Drawing.Point(76, 29);
+            this.IDTextBox.Name = "IDTextBox";
+            this.IDTextBox.ReadOnly = true;
+            this.IDTextBox.Size = new System.Drawing.Size(172, 22);
+            this.IDTextBox.TabIndex = 13;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.TotalText);
             this.panel1.Location = new System.Drawing.Point(359, 447);
