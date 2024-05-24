@@ -35,6 +35,10 @@
 			this.ButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.ItemLable1 = new System.Windows.Forms.Label();
 			this.ItemsSplitContainer = new System.Windows.Forms.SplitContainer();
+			this.SortComboBox = new System.Windows.Forms.ComboBox();
+			this.SortLabel = new System.Windows.Forms.Label();
+			this.FindTextBox = new System.Windows.Forms.TextBox();
+			this.FindLabel = new System.Windows.Forms.Label();
 			this.CategoryComboBox = new System.Windows.Forms.ComboBox();
 			this.CategoryLabel = new System.Windows.Forms.Label();
 			this.DescriptionTextBox = new System.Windows.Forms.TextBox();
@@ -46,10 +50,6 @@
 			this.CostTextBox = new System.Windows.Forms.TextBox();
 			this.IDTextBox = new System.Windows.Forms.TextBox();
 			this.ItemLable2 = new System.Windows.Forms.Label();
-			this.FindLabel = new System.Windows.Forms.Label();
-			this.FindTextBox = new System.Windows.Forms.TextBox();
-			this.SortLabel = new System.Windows.Forms.Label();
-			this.SortComboBox = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
 			this.ButtonsTableLayoutPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ItemsSplitContainer)).BeginInit();
@@ -165,6 +165,51 @@
 			this.ItemsSplitContainer.SplitterDistance = 429;
 			this.ItemsSplitContainer.TabIndex = 2;
 			// 
+			// SortComboBox
+			// 
+			this.SortComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.SortComboBox.FormattingEnabled = true;
+			this.SortComboBox.Items.AddRange(new object[] {
+            "ID",
+            "Name",
+            "Cost(Ascending)",
+            "Cost(Descending)"});
+			this.SortComboBox.Location = new System.Drawing.Point(62, 497);
+			this.SortComboBox.Name = "SortComboBox";
+			this.SortComboBox.Size = new System.Drawing.Size(364, 24);
+			this.SortComboBox.TabIndex = 6;
+			this.SortComboBox.SelectedIndexChanged += new System.EventHandler(this.SortComboBox_SelectedIndexChanged);
+			// 
+			// SortLabel
+			// 
+			this.SortLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.SortLabel.AutoSize = true;
+			this.SortLabel.Location = new System.Drawing.Point(3, 500);
+			this.SortLabel.Name = "SortLabel";
+			this.SortLabel.Size = new System.Drawing.Size(53, 16);
+			this.SortLabel.TabIndex = 5;
+			this.SortLabel.Text = "Sort By:";
+			// 
+			// FindTextBox
+			// 
+			this.FindTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.FindTextBox.Location = new System.Drawing.Point(45, 26);
+			this.FindTextBox.Name = "FindTextBox";
+			this.FindTextBox.Size = new System.Drawing.Size(381, 22);
+			this.FindTextBox.TabIndex = 4;
+			this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
+			// 
+			// FindLabel
+			// 
+			this.FindLabel.AutoSize = true;
+			this.FindLabel.Location = new System.Drawing.Point(3, 29);
+			this.FindLabel.Name = "FindLabel";
+			this.FindLabel.Size = new System.Drawing.Size(36, 16);
+			this.FindLabel.TabIndex = 3;
+			this.FindLabel.Text = "Find:";
+			// 
 			// CategoryComboBox
 			// 
 			this.CategoryComboBox.FormattingEnabled = true;
@@ -266,51 +311,6 @@
 			this.ItemLable2.Size = new System.Drawing.Size(84, 16);
 			this.ItemLable2.TabIndex = 10;
 			this.ItemLable2.Text = "Select Item";
-			// 
-			// FindLabel
-			// 
-			this.FindLabel.AutoSize = true;
-			this.FindLabel.Location = new System.Drawing.Point(3, 29);
-			this.FindLabel.Name = "FindLabel";
-			this.FindLabel.Size = new System.Drawing.Size(36, 16);
-			this.FindLabel.TabIndex = 3;
-			this.FindLabel.Text = "Find:";
-			// 
-			// FindTextBox
-			// 
-			this.FindTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.FindTextBox.Location = new System.Drawing.Point(45, 26);
-			this.FindTextBox.Name = "FindTextBox";
-			this.FindTextBox.Size = new System.Drawing.Size(381, 22);
-			this.FindTextBox.TabIndex = 4;
-			this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
-			// 
-			// SortLabel
-			// 
-			this.SortLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.SortLabel.AutoSize = true;
-			this.SortLabel.Location = new System.Drawing.Point(3, 500);
-			this.SortLabel.Name = "SortLabel";
-			this.SortLabel.Size = new System.Drawing.Size(53, 16);
-			this.SortLabel.TabIndex = 5;
-			this.SortLabel.Text = "Sort By:";
-			// 
-			// SortComboBox
-			// 
-			this.SortComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.SortComboBox.FormattingEnabled = true;
-			this.SortComboBox.Items.AddRange(new object[] {
-            "ID",
-            "Name",
-            "Cost(Ascending)",
-            "Cost(Descending)"});
-			this.SortComboBox.Location = new System.Drawing.Point(62, 497);
-			this.SortComboBox.Name = "SortComboBox";
-			this.SortComboBox.Size = new System.Drawing.Size(364, 24);
-			this.SortComboBox.TabIndex = 6;
-			this.SortComboBox.SelectedIndexChanged += new System.EventHandler(this.SortComboBox_SelectedIndexChanged);
 			// 
 			// ItemsTab
 			// 
