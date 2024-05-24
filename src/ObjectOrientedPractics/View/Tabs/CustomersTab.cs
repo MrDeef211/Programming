@@ -19,6 +19,9 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class CustomersTab : UserControl
     {
+        //Изменение пользователей
+        public static event EventHandler<EventArgs> CustomerChanged;
+
         private static List<Customer> _customers = new List<Customer>();
 
         private List<IDiscount> _deletingDisconts = new List<IDiscount>();
@@ -93,6 +96,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     //НЕ ПИСАТЬ ИЗМЕНЕНИЯ ПОСЛЕ ФИКСАЦИИ!!!!
                     CustomersListBox.Items[index] = selectedCustomer;
                     Customers[index] = selectedCustomer;
+                    
 
                 }
                 else
@@ -111,6 +115,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     Customers.Add(newCustomer);
 
                 }
+                CustomerChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -125,6 +130,8 @@ namespace ObjectOrientedPractics.View.Tabs
                 Customers.RemoveAt(index);
                 CustomersListBox.SelectedIndex = -1;
                 CustomersListBox_SelectedIndexChanged(sender,e);
+
+                CustomerChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
