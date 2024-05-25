@@ -20,15 +20,17 @@ namespace ObjectOrientedPractics.View
             InitializeComponent();
             _store = new Store();
 
+
+            //Подгрузка из БД (при наличии)
             CustomersTab.Customers = _store.Customers;
             CartsTab.Customers = _store.Customers;
             ItemsTab.Items = _store.Items;
             CartsTab.Items = _store.Items;
             OrdersTab.Customers = _store.Customers;
 
+            //Передача событий
             ItemsTab.ItemsChanged += ItemsTab_ItemsChanged;
-
-            CustomersTab.CustomerChanged += ItemsTab_ItemsChanged;
+            CustomersTab.CustomerChanged += CustomerTab_CustomersChanged;
 
         }
 
