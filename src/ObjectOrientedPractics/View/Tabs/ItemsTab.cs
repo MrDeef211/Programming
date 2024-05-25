@@ -18,6 +18,8 @@ namespace ObjectOrientedPractics.View.Tabs
         //Изменение предметов
         public static event EventHandler<EventArgs> ItemsChanged;
 
+
+
         private static List<Item> _items = new List<Item>();
 
         private List<Item> _displayedItems;
